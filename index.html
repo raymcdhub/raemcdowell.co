@@ -20,24 +20,26 @@
     />
 
     <style>
-      /* ─── DESIGN TOKENS — Light: pink / white / black ─── */
+      /* ─── DESIGN TOKENS — Light: pink / cyan / black / white ─── */
       :root {
-        --bg: #ffffff;
-        --bg2: #fafafa;
-        --bg3: #f2f2f2;
+        --bg: #f5f5f5;
+        --bg2: #ebebeb;
+        --bg3: #e0e0e0;
         --text: #0a0a0a;
-        --text2: #2e2e2e;
-        --text3: #888888;
+        --text2: #1a1a1a;
+        --text3: #666666;
         --accent: #f62681;
+        --accent2: #03caf4;
         --accent-hover: #d4196d;
-        --accent-subtle: rgba(246, 38, 129, 0.07);
-        --accent-subtle2: rgba(246, 38, 129, 0.18);
-        --line: rgba(10, 10, 10, 0.1);
-        --line2: rgba(10, 10, 10, 0.05);
+        --accent-subtle: rgba(246, 38, 129, 0.08);
+        --accent-subtle2: rgba(246, 38, 129, 0.22);
+        --accent2-subtle: rgba(3, 202, 244, 0.1);
+        --line: rgba(10, 10, 10, 0.18);
+        --line2: rgba(10, 10, 10, 0.09);
         --card: #ffffff;
-        --nav-bg: rgba(255, 255, 255, 0.95);
-        --surface: #f7f7f7;
-        --border: rgba(10, 10, 10, 0.1);
+        --nav-bg: rgba(245, 245, 245, 0.96);
+        --surface: #efefef;
+        --border: rgba(10, 10, 10, 0.16);
         --tag-text: #c0175f;
       }
 
@@ -50,9 +52,11 @@
         --text2: #aaaaaa;
         --text3: #555555;
         --accent: #f62681;
+        --accent2: #03caf4;
         --accent-hover: #ff4da6;
         --accent-subtle: rgba(246, 38, 129, 0.08);
         --accent-subtle2: rgba(246, 38, 129, 0.2);
+        --accent2-subtle: rgba(3, 202, 244, 0.08);
         --line: rgba(240, 240, 240, 0.08);
         --line2: rgba(240, 240, 240, 0.04);
         --card: #141414;
@@ -232,7 +236,7 @@
       }
       .marquee-item::after {
         content: "·";
-        color: var(--accent);
+        color: var(--accent2);
       }
       @keyframes marquee {
         0% {
@@ -313,6 +317,7 @@
         background: var(--accent);
         color: #fff;
         border: none;
+        border-bottom: 3px solid #a00f4a;
         padding: 0.85rem 2rem;
         font-family: "Montserrat", sans-serif;
         font-size: 0.72rem;
@@ -321,18 +326,36 @@
         cursor: pointer;
         text-decoration: none;
         display: inline-block;
+        box-shadow:
+          0 4px 0 #8c0d3f,
+          0 6px 12px rgba(246, 38, 129, 0.35);
         transition:
-          background 0.2s,
-          transform 0.2s;
+          background 0.15s,
+          transform 0.1s,
+          box-shadow 0.1s,
+          border-bottom-width 0.1s;
+        position: relative;
+        top: 0;
       }
       .btn-primary:hover {
         background: var(--accent-hover);
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+        box-shadow:
+          0 6px 0 #8c0d3f,
+          0 10px 20px rgba(246, 38, 129, 0.4);
+      }
+      .btn-primary:active {
+        transform: translateY(3px);
+        box-shadow:
+          0 1px 0 #8c0d3f,
+          0 2px 6px rgba(246, 38, 129, 0.25);
+        border-bottom-width: 1px;
       }
       .btn-ghost {
-        background: none;
+        background: var(--card);
         color: var(--text2);
         border: 0.5px solid var(--line);
+        border-bottom: 3px solid var(--line);
         padding: 0.85rem 2rem;
         font-family: "Montserrat", sans-serif;
         font-size: 0.72rem;
@@ -341,13 +364,33 @@
         cursor: pointer;
         text-decoration: none;
         display: inline-block;
+        box-shadow:
+          0 4px 0 rgba(10, 10, 10, 0.12),
+          0 6px 12px rgba(0, 0, 0, 0.08);
         transition:
-          border-color 0.2s,
-          color 0.2s;
+          border-color 0.15s,
+          color 0.15s,
+          transform 0.1s,
+          box-shadow 0.1s,
+          border-bottom-width 0.1s;
+        position: relative;
+        top: 0;
       }
       .btn-ghost:hover {
         border-color: var(--accent);
+        border-bottom-color: var(--accent-hover);
         color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow:
+          0 6px 0 rgba(246, 38, 129, 0.2),
+          0 10px 20px rgba(246, 38, 129, 0.12);
+      }
+      .btn-ghost:active {
+        transform: translateY(3px);
+        box-shadow:
+          0 1px 0 rgba(10, 10, 10, 0.1),
+          0 2px 4px rgba(0, 0, 0, 0.06);
+        border-bottom-width: 1px;
       }
 
       .hero-right {
@@ -365,7 +408,7 @@
         color: var(--text2);
         line-height: 1.7;
         padding: 2.5rem 3rem;
-        border-left: 2px solid var(--accent);
+        border-left: 2px solid var(--accent2);
         background: var(--card);
         height: 100%;
         display: flex;
@@ -380,8 +423,13 @@
         left: 0;
         right: 0;
         height: 2px;
-        background: linear-gradient(90deg, var(--accent) 0%, transparent 75%);
-        opacity: 0.55;
+        background: linear-gradient(
+          90deg,
+          var(--accent2) 0%,
+          var(--accent) 60%,
+          transparent 100%
+        );
+        opacity: 0.7;
       }
 
       /* ─── SECTIONS ─── */
@@ -400,7 +448,7 @@
       .section-num {
         font-family: "DM Mono", monospace;
         font-size: 0.6rem;
-        color: var(--accent);
+        color: var(--accent2);
         letter-spacing: 0.2em;
       }
       .section-title {
@@ -448,10 +496,13 @@
         top: 90px;
       }
       .profile-photo-wrap {
-        width: 100%;
-        aspect-ratio: 3/4;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
         overflow: hidden;
-        border: 0.5px solid var(--line);
+        border: 2px solid var(--line);
+        flex-shrink: 0;
+        align-self: flex-start;
       }
       .profile-photo-wrap img {
         width: 100%;
@@ -462,22 +513,27 @@
         display: block;
       }
       .profile-photo-placeholder {
-        width: 100%;
-        height: 100%;
-        min-height: 280px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 2px solid var(--line);
         background: var(--bg3);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.75rem;
+        gap: 0.4rem;
         color: var(--text3);
+        flex-shrink: 0;
+        align-self: flex-start;
       }
       .profile-photo-placeholder span {
         font-family: "DM Mono", monospace;
-        font-size: 0.58rem;
-        letter-spacing: 0.15em;
+        font-size: 0.5rem;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
+        text-align: center;
+        padding: 0 0.5rem;
       }
 
       /* revenue-architecture style card */
@@ -792,9 +848,10 @@
         font-family: "Cormorant Garamond", serif;
         font-size: 2.5rem;
         font-weight: 300;
-        color: var(--line);
+        color: var(--accent2);
         line-height: 1;
         padding-top: 4px;
+        opacity: 0.5;
       }
       .step-title {
         font-family: "Montserrat", sans-serif;
@@ -1005,7 +1062,12 @@
       }
       .accent-bar {
         height: 2px;
-        background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+        background: linear-gradient(
+          90deg,
+          var(--accent2) 0%,
+          var(--accent) 50%,
+          transparent 100%
+        );
       }
 
       /* ─── COOKIE BANNER ─── */
@@ -1065,6 +1127,57 @@
       .cookie-btn:hover {
         background: var(--accent);
         color: #fff;
+      }
+
+      /* ─── LIGHT MODE EXTRA DEPTH ─── */
+      :root .marquee-wrap {
+        background: #161616;
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+      }
+      :root .marquee-item {
+        color: #777;
+      }
+      :root .services {
+        background: #111111;
+      }
+      :root .services .section-title,
+      :root .services .cs-title {
+        color: #f0f0f0;
+      }
+      :root .services .cs-card {
+        background: #1c1c1c;
+        border-color: rgba(255, 255, 255, 0.07);
+      }
+      :root .services .cs-teaser {
+        color: #888;
+      }
+      :root .services .cs-tags span {
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #666;
+      }
+      :root .services .cs-card:hover .cs-tags span {
+        border-color: rgba(246, 38, 129, 0.4);
+        color: var(--accent);
+      }
+      :root .services .cs-icon {
+        color: #888;
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      :root .services .cs-card:hover .cs-icon {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      :root .services .section-num {
+        color: var(--accent2);
+      }
+      :root .services .section-line {
+        background: rgba(255, 255, 255, 0.06);
+      }
+      :root .services .cs-num {
+        color: var(--accent);
+      }
+      :root .aside-dot {
+        background: var(--accent2);
       }
 
       /* ─── RESPONSIVE ─── */
