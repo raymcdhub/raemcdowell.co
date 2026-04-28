@@ -591,6 +591,94 @@
         flex-shrink: 0;
       }
 
+      /* ─── WHAT AWAITS YOU ─── */
+      .awaits-section {
+        background: var(--bg);
+        padding: 7rem 5rem;
+        border-top: 0.5px solid var(--line);
+        position: relative;
+        z-index: 1;
+      }
+      .awaits-headline {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 300;
+        color: var(--text);
+        letter-spacing: -0.01em;
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .awaits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 1.25rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .awaits-card {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--card);
+        display: flex;
+        flex-direction: column;
+      }
+      .awaits-half {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.7rem;
+        padding: 1.1rem 1.2rem;
+        flex: 1;
+      }
+      .awaits-divider {
+        height: 1px;
+        background: var(--line);
+        margin: 0;
+      }
+      .awaits-bad {
+        background: rgba(185, 28, 28, 0.06);
+      }
+      .awaits-good {
+        background: rgba(22, 135, 65, 0.06);
+      }
+      [data-theme="dark"] .awaits-bad {
+        background: rgba(185, 28, 28, 0.12);
+      }
+      [data-theme="dark"] .awaits-good {
+        background: rgba(22, 135, 65, 0.12);
+      }
+      .awaits-icon {
+        font-size: 0.95rem;
+        font-weight: 700;
+        flex-shrink: 0;
+        line-height: 1.6;
+      }
+      .awaits-bad .awaits-icon {
+        color: #b91c1c;
+      }
+      .awaits-good .awaits-icon {
+        color: #16873b;
+      }
+      .awaits-text {
+        font-size: 0.78rem;
+        line-height: 1.65;
+        color: var(--text2);
+        font-family: "Montserrat", sans-serif;
+      }
+      @media (max-width: 900px) {
+        .awaits-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .awaits-section {
+          padding: 5rem 2rem;
+        }
+      }
+      @media (max-width: 580px) {
+        .awaits-grid {
+          grid-template-columns: 1fr;
+        }
+      }
       /* ─── CASE STUDIES ─── */
       .services {
         background: var(--bg2);
@@ -2302,6 +2390,112 @@
         </div>
       </div>
     </section>
+
+    <!-- WHAT AWAITS YOU -->
+    <section class="awaits-section">
+      <h2 class="awaits-headline reveal">What awaits you on the other side?</h2>
+      <div class="awaits-grid">
+        <div class="awaits-card reveal d1">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Working 16 hours a day putting out fires</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >An operation that runs without demanding your energy 24/7</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d2">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Spending hours every week reposting listings just to stay
+              visible</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >A content engine that publishes your listings automatically. No
+              writing. No formatting. No manual posting</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d3">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text">Wasting money on unnecessary hires</span>
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >Streamlined systems that replace manual work and reduce
+              overhead</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d1">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Being stuck in low-value, repetitive tasks</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >Focusing only on high-impact work that actually drives
+              growth</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d2">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Everything depends on you getting it done</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >A business that moves forward even when you're not involved</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d3">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Constantly reacting, fixing, chasing</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >Quiet systems working in the background, keeping everything
+              running</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CASE STUDIES -->
     <section class="services" id="services">
       <div class="section-header reveal">
