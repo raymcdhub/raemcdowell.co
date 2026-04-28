@@ -317,7 +317,7 @@
         background: var(--accent);
         color: #fff;
         border: none;
-        border-bottom: 3px solid #a00f4a;
+        border-radius: 8px;
         padding: 0.85rem 2rem;
         font-family: "Montserrat", sans-serif;
         font-size: 0.72rem;
@@ -325,37 +325,32 @@
         text-transform: uppercase;
         cursor: pointer;
         text-decoration: none;
-        display: inline-block;
-        box-shadow:
-          0 4px 0 #8c0d3f,
-          0 6px 12px rgba(246, 38, 129, 0.35);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        box-shadow: 0 2px 8px rgba(246, 38, 129, 0.25);
         transition:
           background 0.15s,
-          transform 0.1s,
-          box-shadow 0.1s,
-          border-bottom-width 0.1s;
+          transform 0.15s,
+          box-shadow 0.15s;
         position: relative;
         top: 0;
       }
       .btn-primary:hover {
         background: var(--accent-hover);
-        transform: translateY(-2px);
-        box-shadow:
-          0 6px 0 #8c0d3f,
-          0 10px 20px rgba(246, 38, 129, 0.4);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(246, 38, 129, 0.35);
       }
       .btn-primary:active {
-        transform: translateY(3px);
-        box-shadow:
-          0 1px 0 #8c0d3f,
-          0 2px 6px rgba(246, 38, 129, 0.25);
-        border-bottom-width: 1px;
+        transform: translateY(1px);
+        box-shadow: 0 1px 4px rgba(246, 38, 129, 0.2);
       }
+
       .btn-ghost {
         background: var(--card);
         color: var(--text2);
         border: 0.5px solid var(--line);
-        border-bottom: 3px solid var(--line);
+        border-radius: 8px;
         padding: 0.85rem 2rem;
         font-family: "Montserrat", sans-serif;
         font-size: 0.72rem;
@@ -363,34 +358,27 @@
         text-transform: uppercase;
         cursor: pointer;
         text-decoration: none;
-        display: inline-block;
-        box-shadow:
-          0 4px 0 rgba(10, 10, 10, 0.12),
-          0 6px 12px rgba(0, 0, 0, 0.08);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         transition:
           border-color 0.15s,
           color 0.15s,
-          transform 0.1s,
-          box-shadow 0.1s,
-          border-bottom-width 0.1s;
+          transform 0.15s,
+          box-shadow 0.15s;
         position: relative;
         top: 0;
       }
       .btn-ghost:hover {
         border-color: var(--accent);
-        border-bottom-color: var(--accent-hover);
         color: var(--accent);
-        transform: translateY(-2px);
-        box-shadow:
-          0 6px 0 rgba(246, 38, 129, 0.2),
-          0 10px 20px rgba(246, 38, 129, 0.12);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(246, 38, 129, 0.12);
       }
       .btn-ghost:active {
-        transform: translateY(3px);
-        box-shadow:
-          0 1px 0 rgba(10, 10, 10, 0.1),
-          0 2px 4px rgba(0, 0, 0, 0.06);
-        border-bottom-width: 1px;
+        transform: translateY(1px);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
       }
 
       .hero-right {
@@ -1500,7 +1488,20 @@
           firefighting recurrent bottlenecks.
         </p>
         <div class="hero-cta">
-          <a href="#contact" class="btn-primary">Get in touch</a>
+          <a href="#contact" class="btn-primary"
+            >Start
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M2 7h10M8 3l4 4-4 4" /></svg
+          ></a>
           <a href="#about" class="btn-ghost">Learn more</a>
         </div>
       </div>
