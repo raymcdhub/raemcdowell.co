@@ -824,74 +824,157 @@
         color: var(--accent);
       }
 
-      /* ─── APPROACH ─── */
+      /* ─── APPROACH / HOW IT WORKS ─── */
       .approach {
         background: var(--bg);
       }
-      .approach-grid {
+
+      .workflow-outer {
+        position: relative;
+      }
+
+      .workflow-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .workflow-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: start;
+        grid-template-rows: auto auto;
+        gap: 3rem 5rem;
+        position: relative;
       }
-      .step {
-        display: grid;
-        grid-template-columns: 60px 1fr;
-        gap: 1.5rem;
-        padding: 2rem 0;
-        border-bottom: 0.5px solid var(--line);
+
+      .workflow-card {
+        background: var(--card);
+        border: 0.5px solid var(--border);
+        border-radius: 16px;
+        padding: 1.4rem 1.4rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        position: relative;
+        overflow: hidden;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s,
+          transform 0.3s;
       }
-      .step:first-child {
-        border-top: 0.5px solid var(--line);
+      .workflow-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        border-radius: 16px 16px 0 0;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s ease;
       }
-      .step-num {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 2.5rem;
-        font-weight: 300;
-        color: var(--accent2);
-        line-height: 1;
-        padding-top: 4px;
-        opacity: 0.5;
+      .workflow-card:hover::before {
+        transform: scaleX(1);
       }
-      .step-title {
-        font-family: "Montserrat", sans-serif;
-        font-size: 0.7rem;
-        font-weight: 500;
-        color: var(--text);
-        margin-bottom: 0.5rem;
+      .workflow-card:hover {
+        border-color: rgba(246, 38, 129, 0.28);
+        box-shadow: 0 12px 40px rgba(246, 38, 129, 0.08);
+        transform: translateY(-4px);
+      }
+
+      .wf-stage {
+        font-family: "DM Mono", monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
+        color: var(--accent2);
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
       }
-      .step-text {
-        font-size: 0.875rem;
+      .wf-stage::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 0.5px;
+        background: var(--accent2);
+        flex-shrink: 0;
+      }
+
+      .wf-icon {
+        width: 26px;
+        height: 26px;
+        color: var(--text3);
+        flex-shrink: 0;
+        opacity: 0.55;
+      }
+      .wf-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .wf-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.15rem;
+        font-weight: 400;
+        color: var(--text);
+        line-height: 1.2;
+      }
+      .wf-sub {
+        font-family: "DM Mono", monospace;
+        font-size: 0.58rem;
+        color: var(--text3);
+        font-style: italic;
+        letter-spacing: 0.04em;
+        line-height: 1.5;
+        margin-bottom: 0.1rem;
+      }
+      .wf-text {
+        font-size: 0.78rem;
         color: var(--text2);
         line-height: 1.8;
       }
-      .approach-quote {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-top: 2px solid var(--accent);
-        padding: 3rem;
-        position: sticky;
-        top: 90px;
-      }
-      .approach-quote-label {
-        font-family: "DM Mono", monospace;
-        font-size: 0.55rem;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 2rem;
-      }
-      .quote-text {
-        font-family: "DM Mono", monospace;
-        font-size: 0.9rem;
-        font-weight: 300;
-        color: var(--text);
-        line-height: 1.9;
-        letter-spacing: 0.02em;
-      }
 
+      .wf-pilot-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.52rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent2);
+        border: 0.5px solid var(--accent2);
+        border-radius: 20px;
+        padding: 3px 10px;
+        width: fit-content;
+        margin-top: 0.5rem;
+      }
+      .wf-pilot-tag::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent2);
+        animation: pulse-dot 1.8s ease-in-out infinite;
+      }
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.7);
+        }
+      }
       /* ─── CONTACT ─── */
       .contact {
         background: var(--bg2);
@@ -1248,11 +1331,18 @@
           grid-template-columns: 1fr;
           gap: 2px;
         }
-        .approach-grid {
+        .workflow-grid {
           grid-template-columns: 1fr;
+          gap: 1.5rem;
         }
-        .approach-quote {
-          position: static;
+        .workflow-svg {
+          display: none;
+        }
+        #wf4 {
+          order: 4;
+        }
+        #wf3 {
+          order: 3;
         }
         .contact-inner {
           grid-template-columns: 1fr;
@@ -2433,83 +2523,134 @@
       </div>
     </div>
 
-    <!-- APPROACH -->
+    <!-- APPROACH / HOW IT WORKS -->
     <section class="approach" id="approach">
       <div class="section-header reveal">
         <span class="section-num">02</span>
         <h2 class="section-title">How it works</h2>
         <div class="section-line"></div>
       </div>
-      <div class="approach-grid">
-        <div>
-          <div class="step reveal d1">
-            <div class="step-num">01</div>
-            <div>
-              <div class="step-title">Discover &amp; Diagnose</div>
-              <p
-                class="step-text"
-                style="
-                  font-style: italic;
-                  color: var(--text3);
-                  margin-bottom: 0.75rem;
-                "
+
+      <div class="workflow-outer" id="workflowOuter">
+        <svg class="workflow-svg" id="workflowSvg" aria-hidden="true"></svg>
+
+        <div class="workflow-grid" id="workflowGrid">
+          <!-- Card 1 -->
+          <div class="workflow-card reveal d1" id="wf1">
+            <div class="wf-stage">Stage 1</div>
+            <div class="wf-icon">
+              <!-- location/pin icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                A Thorough Look at How Your Business Actually Works
-              </p>
-              <p class="step-text">
-                We learn how your business actually works: goals, constraints,
-                handoffs, and what a win looks like. We map your tech stack and
-                where data lives: CRMs, inboxes, spreadsheets, internal tools.
-                Then we audit your processes to find real bottlenecks and decide
-                what should and shouldn't be automated.
-              </p>
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
             </div>
+            <h3 class="wf-title">Discover &amp; Diagnose</h3>
+            <p class="wf-sub">
+              A Thorough Look at How Your Business Actually Works
+            </p>
+            <p class="wf-text">
+              We learn how your business actually works: goals, constraints,
+              handoffs, and what a win looks like. We map your tech stack and
+              where data lives — CRMs, inboxes, spreadsheets, internal tools —
+              then audit your processes to find real bottlenecks.
+            </p>
           </div>
-          <div class="step reveal d2">
-            <div class="step-num">02</div>
-            <div>
-              <div class="step-title">Design, Build &amp; Validate</div>
-              <p
-                class="step-text"
-                style="
-                  font-style: italic;
-                  color: var(--text3);
-                  margin-bottom: 0.75rem;
-                "
+
+          <!-- Card 2 -->
+          <div class="workflow-card reveal d2" id="wf2">
+            <div class="wf-stage">Stage 2</div>
+            <div class="wf-icon">
+              <!-- DNA icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                Building the Right Thing, the Right Way
-              </p>
-              <p class="step-text">
-                We prioritise high-impact opportunities and decide where AI
-                helps and where it doesn't. We design and build custom
-                workflows, test different approaches on real data, and explain
-                every choice in plain language. We run evaluations in a
-                real-world environment before any full rollout.
-              </p>
+                <path d="M5 3c0 0 4 1.5 4 6s-4 6-4 9" />
+                <path d="M19 3c0 0-4 1.5-4 6s4 6 4 9" />
+                <path d="M5.5 6.5h13" />
+                <path d="M5.5 10.5h13" />
+                <path d="M5.5 14.5h13" />
+              </svg>
             </div>
+            <h3 class="wf-title">Design, Build &amp; Validate</h3>
+            <p class="wf-sub">Building the Right Thing, the Right Way</p>
+            <p class="wf-text">
+              We prioritise high-impact opportunities and decide where AI helps
+              and where it doesn't. We design and build custom workflows, test
+              approaches on real data, and run evaluations in a real-world
+              environment before any full rollout.
+            </p>
+            <div class="wf-pilot-tag">Launch pilot</div>
           </div>
-          <div class="step reveal d3">
-            <div class="step-num">03</div>
-            <div>
-              <div class="step-title">Launch, Monitor &amp; Optimise</div>
-              <p
-                class="step-text"
-                style="
-                  font-style: italic;
-                  color: var(--text3);
-                  margin-bottom: 0.75rem;
-                "
+
+          <!-- Card 4 (bottom-left) -->
+          <div class="workflow-card reveal d4" id="wf4">
+            <div class="wf-stage">Stage 4</div>
+            <div class="wf-icon">
+              <!-- trending up icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                Continuous Improvement is Part of the Deal
-              </p>
-              <p class="step-text">
-                We launch into production with clear success metrics and
-                safeguards. We monitor performance, collect feedback from your
-                team and customers, and fix issues quickly. We continuously
-                refine tools, logic, and models so the system improves as your
-                business evolves.
-              </p>
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                <polyline points="16 7 22 7 22 13" />
+              </svg>
             </div>
+            <h3 class="wf-title">AI-enabled Scaling</h3>
+            <p class="wf-sub">System Runs. You Scale.</p>
+            <p class="wf-text">
+              With reliable automation in place, you stop firefighting
+              repetitive tasks and reclaim hours every week. The system works in
+              the background — so you can focus on strategy, growth, and the
+              work only you can do.
+            </p>
+          </div>
+
+          <!-- Card 3 (bottom-right) -->
+          <div class="workflow-card reveal d3" id="wf3">
+            <div class="wf-stage">Stage 3</div>
+            <div class="wf-icon">
+              <!-- gear icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+                />
+              </svg>
+            </div>
+            <h3 class="wf-title">Monitor &amp; Optimise</h3>
+            <p class="wf-sub">Continuous Improvement is Part of the Deal</p>
+            <p class="wf-text">
+              We launch into production with clear success metrics and
+              safeguards. We monitor performance, collect feedback, and fix
+              issues quickly — continuously refining tools, logic, and models so
+              the system improves as your business evolves.
+            </p>
           </div>
         </div>
       </div>
@@ -2869,6 +3010,57 @@
           document.getElementById("form-success").style.display = "block";
         }, 1000);
       }
+      function drawWorkflowLines() {
+        const outer = document.getElementById("workflowOuter");
+        const svg = document.getElementById("workflowSvg");
+        const c1 = document.getElementById("wf1");
+        const c2 = document.getElementById("wf2");
+        const c3 = document.getElementById("wf3");
+        const c4 = document.getElementById("wf4");
+        if (!outer || !svg || !c1 || !c2 || !c3 || !c4) return;
+
+        if (window.innerWidth <= 900) {
+          svg.innerHTML = "";
+          return;
+        }
+
+        const obr = outer.getBoundingClientRect();
+        const rel = (el) => {
+          const r = el.getBoundingClientRect();
+          return {
+            cx: r.left - obr.left + r.width / 2,
+            cy: r.top - obr.top + r.height / 2,
+            right: r.right - obr.left,
+            left: r.left - obr.left,
+            top: r.top - obr.top,
+            bottom: r.bottom - obr.top,
+          };
+        };
+
+        const p1 = rel(c1),
+          p2 = rel(c2),
+          p3 = rel(c3),
+          p4 = rel(c4);
+
+        // 1→2: right edge of card1 to left edge of card2
+        const l1 = `M${p1.right},${p1.cy} L${p2.left},${p2.cy}`;
+        // 2→3: bottom of card2 to top of card3
+        const l2 = `M${p2.cx},${p2.bottom} L${p3.cx},${p3.top}`;
+        // 3→4: left edge of card3 to right edge of card4
+        const l3 = `M${p3.left},${p3.cy} L${p4.right},${p4.cy}`;
+
+        svg.setAttribute("viewBox", `0 0 ${obr.width} ${obr.height}`);
+        svg.innerHTML = [l1, l2, l3]
+          .map(
+            (d) =>
+              `<path d="${d}" stroke="var(--text)" stroke-width="2" fill="none" opacity="0.18"/>`,
+          )
+          .join("");
+      }
+
+      window.addEventListener("load", drawWorkflowLines);
+      window.addEventListener("resize", drawWorkflowLines);
+      setTimeout(drawWorkflowLines, 2700);
     </script>
   </body>
 </html>
