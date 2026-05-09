@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -25,7 +25,7 @@
         --bg: #f5f5f5;
         --bg2: #ebebeb;
         --bg3: #e0e0e0;
-        --text: #0a0a0a;
+        --text: #3a3a3a;
         --text2: #1a1a1a;
         --text3: #666666;
         --accent: #f62681;
@@ -152,22 +152,22 @@
         letter-spacing: 0.04em;
         color: var(--text);
         text-decoration: none;
+        flex-shrink: 0;
       }
       .nav-logo span {
         color: var(--accent);
       }
-      .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-      }
+      /* Centered nav links */
       .nav-links {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
         display: flex;
-        gap: 2rem;
+        gap: 2.2rem;
         list-style: none;
       }
       .nav-links a {
-        font-size: 0.7rem;
+        font-size: 0.62rem;
         letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--text2);
@@ -191,23 +191,181 @@
       .nav-links a:hover::after {
         width: 100%;
       }
+      /* Right side group */
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-shrink: 0;
+      }
+      /* Sun/moon icon button */
       .theme-btn {
         background: none;
         border: 0.5px solid var(--line);
         border-radius: 20px;
-        padding: 5px 12px;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
-        font-size: 0.67rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
         color: var(--text3);
-        transition: all 0.2s;
-        font-family: "DM Mono", monospace;
+        transition: border-color 0.2s, color 0.2s;
+        padding: 0;
       }
       .theme-btn:hover {
         border-color: var(--accent);
         color: var(--accent);
       }
+      /* Show sun in dark mode (click to go light), moon in light mode (click to go dark) */
+      .icon-sun { display: none; }
+      .icon-moon { display: block; }
+      [data-theme="dark"] .icon-sun { display: block; }
+      [data-theme="dark"] .icon-moon { display: none; }
+      /* Nav Start button */
+      /* ── Unified Start button ── */
+      .btn-start {
+        background: #3a3a3a;
+        color: #ffffff;
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 6px;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        cursor: pointer;
+        box-shadow:
+          0 2px 0 rgba(0,0,0,0.45),
+          0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+        position: relative;
+        top: 0;
+      }
+      .btn-start:hover {
+        transform: translateY(-1px);
+        box-shadow:
+          0 3px 0 rgba(0,0,0,0.45),
+          0 6px 12px rgba(0,0,0,0.14);
+      }
+      .btn-start:active {
+        transform: translateY(2px);
+        box-shadow:
+          0 0px 0 rgba(0,0,0,0.45),
+          0 1px 4px rgba(0,0,0,0.1);
+      }
+      /* Nav size */
+      .btn-start.btn-start--sm {
+        font-size: 0.62rem;
+        padding: 0.48rem 1.1rem;
+        border-radius: 5px;
+      }
+      /* Hero size */
+      .btn-start.btn-start--lg {
+        font-size: 0.72rem;
+        padding: 0.9rem 2.2rem;
+        border-radius: 7px;
+        box-shadow:
+          0 3px 0 rgba(0,0,0,0.45),
+          0 6px 14px rgba(0,0,0,0.12);
+      }
+      .btn-start.btn-start--lg:hover {
+        box-shadow:
+          0 5px 0 rgba(0,0,0,0.45),
+          0 8px 18px rgba(0,0,0,0.16);
+      }
+      .btn-start.btn-start--lg:active {
+        transform: translateY(2px);
+        box-shadow:
+          0 1px 0 rgba(0,0,0,0.45),
+          0 2px 6px rgba(0,0,0,0.1);
+      }
+      /* Dark mode: flat, white pill */
+      /* Start button inside always-dark hero: always white */
+      .hero .btn-start,
+      .hero-left .btn-start {
+        background: #ffffff;
+        color: #111111;
+        border-color: rgba(255,255,255,0.15);
+        box-shadow: none;
+      }
+      .hero .btn-start:hover,
+      .hero-left .btn-start:hover {
+        background: #f0f0f0;
+        transform: none;
+        box-shadow: none;
+      }
+        background: #ffffff;
+        color: #111111;
+        border-color: rgba(255,255,255,0.15);
+        box-shadow: none;
+      }
+      [data-theme="dark"] .btn-start:hover {
+        background: #f0f0f0;
+        transform: none;
+        box-shadow: none;
+      }
+      [data-theme="dark"] .btn-start:active {
+        background: #d8d8d8;
+        transform: none;
+      }
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: all 0.2s;
+      }
+      /* Mobile menu overlay */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        backdrop-filter: blur(14px);
+        border-bottom: 0.5px solid var(--line);
+        z-index: 99;
+        padding: 1.5rem 2rem;
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: opacity 0.2s, transform 0.2s;
+      }
+      .mobile-menu.open {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .mobile-menu ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+      .mobile-menu ul a {
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text2);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .mobile-menu ul a:hover { color: var(--accent); }
 
       /* ─── MARQUEE ─── */
       .marquee-wrap {
@@ -250,15 +408,20 @@
       /* ─── HERO ─── */
       .hero {
         min-height: calc(100vh - 60px - 37px);
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-      .hero-left {
-        padding: 6rem 4rem 5rem 5rem;
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
-        border-right: 0.5px solid var(--line);
+        text-align: center;
+      }
+      .hero-left {
+        padding: 6rem 5rem 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 860px;
+        margin: 0 auto;
       }
       .hero-eyebrow {
         font-family: "DM Mono", monospace;
@@ -306,6 +469,26 @@
         line-height: 1.95;
         max-width: 440px;
         margin-bottom: 3.5rem;
+      }
+      .hero-h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(2rem, 3.8vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        margin-bottom: 1.75rem;
+        text-transform: lowercase;
+      }
+      .hero-sub {
+        font-size: 0.9rem;
+        color: var(--text3);
+        line-height: 1.85;
+        max-width: 580px;
+        margin-bottom: 3rem;
+        font-weight: 300;
+        letter-spacing: 0.01em;
+        text-align: center;
       }
       .hero-cta {
         display: flex;
@@ -381,23 +564,16 @@
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
       }
 
-      .hero-right {
-        display: flex;
-        flex-direction: column;
-        background: var(--bg2);
-        overflow: hidden;
-      }
-      /* ─── HERO DIAGRAM ─── */
+      /* ─── HERO DIAGRAM (standalone section) ─── */
       .hero-visual {
-        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         background: var(--card);
-        border-left: 2px solid var(--line);
         position: relative;
         overflow: hidden;
-        padding: 1.5rem 1rem;
+        padding: 2rem 1rem;
+        border-radius: 8px;
       }
       .hero-visual::before {
         content: "";
@@ -412,7 +588,9 @@
           var(--accent) 60%,
           transparent 100%
         );
-        opacity: 0.8;
+        opacity: 0.85;
+        z-index: 1;
+        border-radius: 8px 8px 0 0;
       }
       .hvd {
         width: 100%;
@@ -440,11 +618,12 @@
         letter-spacing: 0.2em;
       }
       .section-title {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(2rem, 4vw, 3.2rem);
-        font-weight: 300;
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+        font-weight: 700;
         color: var(--text);
-        letter-spacing: -0.01em;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
       }
       .section-line {
         flex: 1;
@@ -588,11 +767,12 @@
         z-index: 1;
       }
       .awaits-headline {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(2rem, 4vw, 3.2rem);
-        font-weight: 300;
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+        font-weight: 700;
         color: var(--text);
-        letter-spacing: -0.01em;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
         text-align: center;
         margin-bottom: 4rem;
       }
@@ -1292,9 +1472,7 @@
       /* Override both :root (light) and [data-theme="dark"] so the hero
          always renders with the dark palette regardless of user preference. */
       .hero,
-      .hero-left,
-      .hero-right,
-      .hero-visual {
+      .hero-left {
         --bg: #0a0a0a;
         --bg2: #111111;
         --bg3: #1a1a1a;
@@ -1316,13 +1494,6 @@
         --tag-text: #f62681;
         background: var(--bg);
         color: var(--text);
-      }
-      .hero-visual {
-        background: var(--card);
-      }
-      /* hero eyebrow colour in light mode — keep it readable on dark bg */
-      .hero .hero-eyebrow {
-        color: var(--accent) !important;
       }
 
       /* ─── LIGHT MODE EXTRA DEPTH ─── */
@@ -1384,14 +1555,18 @@
         .nav-links {
           display: none;
         }
+        .btn-start.btn-start--sm {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
         .hero {
           grid-template-columns: 1fr;
           min-height: auto;
         }
         .hero-left {
-          padding: 4rem 2rem 2rem;
-          border-right: none;
-          border-bottom: 0.5px solid var(--line);
+          padding: 4rem 2rem 3rem;
         }
         section {
           padding: 4rem 2rem;
@@ -1442,18 +1617,31 @@
   <body>
     <nav>
       <a href="#" class="nav-logo">Rae <span>McDowell</span></a>
+      <ul class="nav-links">
+        <li><a href="#services">Case studies</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
       <div class="nav-right">
-        <ul class="nav-links">
-          <li><a href="#services">Case studies</a></li>
-          <li><a href="#approach">Approach</a></li>
-          <li><a href="#contact">Get in Touch</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-        <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">
-          Dark
+        <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="#contact" class="btn-start btn-start--sm">Start<svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:0.35rem"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+        <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Open menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#services" onclick="closeMobileMenu()">Case studies</a></li>
+        <li><a href="#approach" onclick="closeMobileMenu()">Approach</a></li>
+        <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+        <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+      </ul>
+    </div>
 
     <div class="marquee-wrap">
       <div class="marquee-track">
@@ -1478,35 +1666,480 @@
 
     <section class="hero" style="padding: 0; border-top: none">
       <div class="hero-left">
-        <div class="hero-eyebrow">Dublin-Based AI Automation Consultant</div>
-        <h1 class="hero-name">Rae<br /><em>McDowell</em></h1>
-        <p class="hero-title">AI · Automation · Tech Advisory</p>
-        <p class="hero-desc">
-          I help founder-led SMEs scale their business without increasing costs
-          or time. With tailored systems, you can focus on human-dependent
-          activities and actually move your business forward instead of
-          firefighting recurrent bottlenecks.
-        </p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn-primary"
-            >Start
+        <h1 class="hero-h1">Scale your business without increasing headcount, costs or time.</h1>
+        <p class="hero-sub">With tailored AI systems that generate leads, close deals, and scale operations, you can focus on human-dependent activities and actually move your business forward instead of firefighting recurrent bottlenecks.</p>
+        <div class="hero-cta" style="justify-content: center;">
+          <a href="#contact" class="btn-start btn-start--lg">Start<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT AWAITS YOU -->
+    <section class="awaits-section">
+      <h2 class="awaits-headline reveal">What awaits you on the other side?</h2>
+      <div class="awaits-grid">
+        <div class="awaits-card reveal d1">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Working 16 hours a day putting out fires</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >An operation that runs without demanding your energy 24/7</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d2">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Spending hours every week reposting listings just to stay
+              visible</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >A content engine that publishes your listings automatically. No
+              writing. No formatting. No manual posting</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d3">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text">Wasting money on unnecessary hires</span>
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >Streamlined systems that replace manual work and reduce
+              overhead</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d1">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Being stuck in low-value, repetitive tasks</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >Focusing only on high-impact work that actually drives
+              growth</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d2">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Everything depends on you getting it done</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >A business that moves forward even when you're not involved</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d3">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Constantly reacting, fixing, chasing</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >Quiet systems working in the background, keeping everything
+              running</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="services" id="services">
+      <div class="section-header reveal">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Case studies</h2>
+        <div class="section-line"></div>
+      </div>
+      <p
+        class="reveal"
+        style="
+          font-size: 0.82rem;
+          color: var(--text3);
+          font-family: &quot;DM Mono&quot;, monospace;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          margin-bottom: 3rem;
+        "
+      >
+        What I've been up to
+      </p>
+      <div class="cs-grid">
+        <div class="cs-card reveal d1">
+          <div class="cs-card-inner">
+            <div class="cs-num">01</div>
+            <div class="cs-icon">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18M9 21V9" />
+              </svg>
+            </div>
+            <h3 class="cs-title">Property listings, automated</h3>
+            <p class="cs-teaser">
+              From listing to posted — completely hands-off.
+            </p>
+          </div>
+          <div class="cs-tags">
+            <span>AI copywriting</span><span>Social scheduling</span
+            ><span>Content automation</span>
+          </div>
+          <button class="cs-read-btn" onclick="openModal('cs1')">
+            Read case study
             <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
             >
-              <path d="M2 7h10M8 3l4 4-4 4" /></svg
-          ></a>
-          <a href="#about" class="btn-ghost">Learn more</a>
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="cs-card reveal d2">
+          <div class="cs-card-inner">
+            <div class="cs-num">02</div>
+            <div class="cs-icon">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                />
+                <path d="M8 10h8M8 14h4" />
+              </svg>
+            </div>
+            <h3 class="cs-title">Lead qualification on Daft</h3>
+            <p class="cs-teaser">
+              Filter serious buyers from noise automatically.
+            </p>
+          </div>
+          <div class="cs-tags">
+            <span>Lead qualification</span><span>Email automation</span
+            ><span>Inbox triage</span>
+          </div>
+          <button class="cs-read-btn" onclick="openModal('cs2')">
+            Read case study
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="hero-visual">
+    </section>
+
+    <!-- MODALS -->
+    <div
+      class="cs-modal-overlay"
+      id="modal-cs1"
+      onclick="closeModalOutside(event, 'cs1')"
+    >
+      <div class="cs-modal">
+        <button class="cs-modal-close" onclick="closeModal('cs1')">
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="cs-modal-num">Case Study · 01</div>
+        <h2 class="cs-modal-title">Property listings, automated</h2>
+        <div class="cs-modal-body">
+          <p>
+            A student accommodation agency was spending hours manually copying
+            and pasting social media posts for every new listing (and old ones)
+            and deciding when to post them. The process was inconsistent,
+            time-consuming, and entirely dependent on whoever had the bandwidth
+            that week.
+          </p>
+          <p>
+            I built a pipeline where a new property listing automatically
+            triggers an AI rewrite — optimised for social — and schedules it to
+            go live twice a week without anyone touching it.
+          </p>
+          <p>
+            The result: consistent social presence, zero manual effort, and a
+            content calendar that runs itself.
+          </p>
+        </div>
+        <div class="cs-modal-tags">
+          <span>AI copywriting</span><span>Automated Online Presence</span
+          ><span>Content automation</span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="cs-modal-overlay"
+      id="modal-cs2"
+      onclick="closeModalOutside(event, 'cs2')"
+    >
+      <div class="cs-modal">
+        <button class="cs-modal-close" onclick="closeModal('cs2')">
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="cs-modal-num">Case Study · 02</div>
+        <h2 class="cs-modal-title">Lead qualification on Daft</h2>
+        <div class="cs-modal-body">
+          <p>
+            A homeshare facilitator receives a high volume of accommodation
+            enquiries through Daft.ie every day. Each enquiry triggers an email
+            notification to a shared inbox, so someone on the team had to open
+            each one individually, copy a standard response template, paste it
+            into a reply, and send it manually.
+          </p>
+          <p>
+            With approximately 50 enquiries arriving per day across two staff
+            members, that process was consuming close to two hours of working
+            time every single day on a task that required zero judgement and
+            delivered no additional value to the applicant.
+          </p>
+          <p>
+            I delivered an automated flow that now handles enquiry responses
+            end-to-end: new messages from Daft.ie trigger the workflow, which
+            extracts the enquirer's details, pulls a branded reply template,
+            sends a personalised acknowledgement, and keeps the inbox clean
+            automatically.
+          </p>
+          <p>
+            The result is a process that no longer consumes staff time and
+            actively improves the quality of leads reaching the team. Every
+            Daft.ie enquiry now triggers an automated response containing a
+            qualification form, ensuring that only genuinely interested
+            prospects who complete it progress further. The team's attention is
+            directed where it matters most. Based on approximately 50 daily
+            enquiries at around one minute each, the automation recovers an
+            estimated two hours per day previously spent on manual replies. Time
+            now available for higher-value work, including following up with
+            pre-qualified leads. No vendor dependency, no additional licence
+            cost, and no reliance on systems the team cannot see or control.
+          </p>
+        </div>
+        <div class="cs-modal-tags">
+          <span>Lead qualification</span><span>Email automation</span
+          ><span>Inbox triage</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- APPROACH / HOW IT WORKS -->
+    <section class="approach" id="approach">
+      <div class="section-header reveal">
+        <span class="section-num">02</span>
+        <h2 class="section-title">How it works</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="workflow-outer" id="workflowOuter">
+        <svg class="workflow-svg" id="workflowSvg" aria-hidden="true"></svg>
+
+        <div class="workflow-grid" id="workflowGrid">
+          <!-- Card 1 -->
+          <div class="workflow-card reveal d1" id="wf1">
+            <div class="wf-stage">Stage 1</div>
+            <div class="wf-icon">
+              <!-- location/pin icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+            </div>
+            <h3 class="wf-title">Discover &amp; Diagnose</h3>
+            <p class="wf-sub">
+              A Thorough Look at How Your Business Actually Works
+            </p>
+            <p class="wf-text">
+              We learn how your business actually works: goals, constraints,
+              handoffs, and what a win looks like. We map your tech stack and
+              where data lives (CRMs, inboxes, spreadsheets, internal tools)
+              then audit your processes to find real bottlenecks.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="workflow-card reveal d2" id="wf2">
+            <div class="wf-stage">Stage 2</div>
+            <div class="wf-icon">
+              <!-- DNA icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 3c0 0 4 1.5 4 6s-4 6-4 9" />
+                <path d="M19 3c0 0-4 1.5-4 6s4 6 4 9" />
+                <path d="M5.5 6.5h13" />
+                <path d="M5.5 10.5h13" />
+                <path d="M5.5 14.5h13" />
+              </svg>
+            </div>
+            <h3 class="wf-title">Design, Build &amp; Validate</h3>
+            <p class="wf-sub">Building the Right Thing, the Right Way</p>
+            <p class="wf-text">
+              We prioritise high-impact opportunities, design and build custom
+              workflows, test approaches on real data, and run evaluations in a
+              real-world environment before any full rollout.
+            </p>
+            <div class="wf-pilot-tag">Launch pilot</div>
+          </div>
+
+          <!-- Card 4 (bottom-left) -->
+          <div class="workflow-card reveal d4" id="wf4">
+            <div class="wf-stage">Stage 4</div>
+            <div class="wf-icon">
+              <!-- trending up icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                <polyline points="16 7 22 7 22 13" />
+              </svg>
+            </div>
+            <h3 class="wf-title">AI-enabled Scaling</h3>
+            <p class="wf-sub">System Runs. You Scale.</p>
+            <p class="wf-text">
+              With reliable automation in place, you stop firefighting
+              repetitive tasks and reclaim hours every week. The system works in
+              the background so you can focus on strategy, growth, and the work
+              only you can do.
+            </p>
+          </div>
+
+          <!-- Card 3 (bottom-right) -->
+          <div class="workflow-card reveal d3" id="wf3">
+            <div class="wf-stage">Stage 3</div>
+            <div class="wf-icon">
+              <!-- gear icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+                />
+              </svg>
+            </div>
+            <h3 class="wf-title">Monitor &amp; Optimise</h3>
+            <p class="wf-sub">Continuous Improvement is Part of the Deal</p>
+            <p class="wf-text">
+              We launch into production with clear success metrics and
+              safeguards. We monitor performance, collect feedback, and fix
+              issues quickly, continuously refining tools, logic, and models so
+              the system improves as your business evolves.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEFORE / AFTER DIAGRAM -->
+    <section class="before-after-section" style="padding: 4rem 5rem; border-top: 0.5px solid var(--line);">
+      <div class="section-header reveal" style="margin-bottom: 3rem;">
+        <span class="section-num" style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--accent2); letter-spacing: 0.2em;">—</span>
+        <h2 class="section-title">Before &amp; After</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="hero-visual reveal" style="height: auto; min-height: 420px; border: 0.5px solid var(--line); background: #0a0a0a !important;">
           <svg
             class="hvd"
             viewBox="0 0 520 370"
@@ -2388,465 +3021,6 @@
               </text>
             </g>
           </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHAT AWAITS YOU -->
-    <section class="awaits-section">
-      <h2 class="awaits-headline reveal">What awaits you on the other side?</h2>
-      <div class="awaits-grid">
-        <div class="awaits-card reveal d1">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Working 16 hours a day putting out fires</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >An operation that runs without demanding your energy 24/7</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d2">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Spending hours every week reposting listings just to stay
-              visible</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >A content engine that publishes your listings automatically. No
-              writing. No formatting. No manual posting</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d3">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text">Wasting money on unnecessary hires</span>
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >Streamlined systems that replace manual work and reduce
-              overhead</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d1">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Being stuck in low-value, repetitive tasks</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >Focusing only on high-impact work that actually drives
-              growth</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d2">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Everything depends on you getting it done</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >A business that moves forward even when you're not involved</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d3">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Constantly reacting, fixing, chasing</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >Quiet systems working in the background, keeping everything
-              running</span
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CASE STUDIES -->
-    <section class="services" id="services">
-      <div class="section-header reveal">
-        <span class="section-num">01</span>
-        <h2 class="section-title">Case studies</h2>
-        <div class="section-line"></div>
-      </div>
-      <p
-        class="reveal"
-        style="
-          font-size: 0.82rem;
-          color: var(--text3);
-          font-family: &quot;DM Mono&quot;, monospace;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          margin-bottom: 3rem;
-        "
-      >
-        What I've been up to
-      </p>
-      <div class="cs-grid">
-        <div class="cs-card reveal d1">
-          <div class="cs-card-inner">
-            <div class="cs-num">01</div>
-            <div class="cs-icon">
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M9 21V9" />
-              </svg>
-            </div>
-            <h3 class="cs-title">Property listings, automated</h3>
-            <p class="cs-teaser">
-              From listing to posted — completely hands-off.
-            </p>
-          </div>
-          <div class="cs-tags">
-            <span>AI copywriting</span><span>Social scheduling</span
-            ><span>Content automation</span>
-          </div>
-          <button class="cs-read-btn" onclick="openModal('cs1')">
-            Read case study
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-
-        <div class="cs-card reveal d2">
-          <div class="cs-card-inner">
-            <div class="cs-num">02</div>
-            <div class="cs-icon">
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                />
-                <path d="M8 10h8M8 14h4" />
-              </svg>
-            </div>
-            <h3 class="cs-title">Lead qualification on Daft</h3>
-            <p class="cs-teaser">
-              Filter serious buyers from noise automatically.
-            </p>
-          </div>
-          <div class="cs-tags">
-            <span>Lead qualification</span><span>Email automation</span
-            ><span>Inbox triage</span>
-          </div>
-          <button class="cs-read-btn" onclick="openModal('cs2')">
-            Read case study
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- MODALS -->
-    <div
-      class="cs-modal-overlay"
-      id="modal-cs1"
-      onclick="closeModalOutside(event, 'cs1')"
-    >
-      <div class="cs-modal">
-        <button class="cs-modal-close" onclick="closeModal('cs1')">
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
-        <div class="cs-modal-num">Case Study · 01</div>
-        <h2 class="cs-modal-title">Property listings, automated</h2>
-        <div class="cs-modal-body">
-          <p>
-            A student accommodation agency was spending hours manually copying
-            and pasting social media posts for every new listing (and old ones)
-            and deciding when to post them. The process was inconsistent,
-            time-consuming, and entirely dependent on whoever had the bandwidth
-            that week.
-          </p>
-          <p>
-            I built a pipeline where a new property listing automatically
-            triggers an AI rewrite — optimised for social — and schedules it to
-            go live twice a week without anyone touching it.
-          </p>
-          <p>
-            The result: consistent social presence, zero manual effort, and a
-            content calendar that runs itself.
-          </p>
-        </div>
-        <div class="cs-modal-tags">
-          <span>AI copywriting</span><span>Automated Online Presence</span
-          ><span>Content automation</span>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="cs-modal-overlay"
-      id="modal-cs2"
-      onclick="closeModalOutside(event, 'cs2')"
-    >
-      <div class="cs-modal">
-        <button class="cs-modal-close" onclick="closeModal('cs2')">
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
-        <div class="cs-modal-num">Case Study · 02</div>
-        <h2 class="cs-modal-title">Lead qualification on Daft</h2>
-        <div class="cs-modal-body">
-          <p>
-            A homeshare facilitator receives a high volume of accommodation
-            enquiries through Daft.ie every day. Each enquiry triggers an email
-            notification to a shared inbox, so someone on the team had to open
-            each one individually, copy a standard response template, paste it
-            into a reply, and send it manually.
-          </p>
-          <p>
-            With approximately 50 enquiries arriving per day across two staff
-            members, that process was consuming close to two hours of working
-            time every single day on a task that required zero judgement and
-            delivered no additional value to the applicant.
-          </p>
-          <p>
-            I delivered an automated flow that now handles enquiry responses
-            end-to-end: new messages from Daft.ie trigger the workflow, which
-            extracts the enquirer's details, pulls a branded reply template,
-            sends a personalised acknowledgement, and keeps the inbox clean
-            automatically.
-          </p>
-          <p>
-            The result is a process that no longer consumes staff time and
-            actively improves the quality of leads reaching the team. Every
-            Daft.ie enquiry now triggers an automated response containing a
-            qualification form, ensuring that only genuinely interested
-            prospects who complete it progress further. The team's attention is
-            directed where it matters most. Based on approximately 50 daily
-            enquiries at around one minute each, the automation recovers an
-            estimated two hours per day previously spent on manual replies. Time
-            now available for higher-value work, including following up with
-            pre-qualified leads. No vendor dependency, no additional licence
-            cost, and no reliance on systems the team cannot see or control.
-          </p>
-        </div>
-        <div class="cs-modal-tags">
-          <span>Lead qualification</span><span>Email automation</span
-          ><span>Inbox triage</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- APPROACH / HOW IT WORKS -->
-    <section class="approach" id="approach">
-      <div class="section-header reveal">
-        <span class="section-num">02</span>
-        <h2 class="section-title">How it works</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="workflow-outer" id="workflowOuter">
-        <svg class="workflow-svg" id="workflowSvg" aria-hidden="true"></svg>
-
-        <div class="workflow-grid" id="workflowGrid">
-          <!-- Card 1 -->
-          <div class="workflow-card reveal d1" id="wf1">
-            <div class="wf-stage">Stage 1</div>
-            <div class="wf-icon">
-              <!-- location/pin icon -->
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
-                />
-                <circle cx="12" cy="9" r="2.5" />
-              </svg>
-            </div>
-            <h3 class="wf-title">Discover &amp; Diagnose</h3>
-            <p class="wf-sub">
-              A Thorough Look at How Your Business Actually Works
-            </p>
-            <p class="wf-text">
-              We learn how your business actually works: goals, constraints,
-              handoffs, and what a win looks like. We map your tech stack and
-              where data lives (CRMs, inboxes, spreadsheets, internal tools)
-              then audit your processes to find real bottlenecks.
-            </p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="workflow-card reveal d2" id="wf2">
-            <div class="wf-stage">Stage 2</div>
-            <div class="wf-icon">
-              <!-- DNA icon -->
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M5 3c0 0 4 1.5 4 6s-4 6-4 9" />
-                <path d="M19 3c0 0-4 1.5-4 6s4 6 4 9" />
-                <path d="M5.5 6.5h13" />
-                <path d="M5.5 10.5h13" />
-                <path d="M5.5 14.5h13" />
-              </svg>
-            </div>
-            <h3 class="wf-title">Design, Build &amp; Validate</h3>
-            <p class="wf-sub">Building the Right Thing, the Right Way</p>
-            <p class="wf-text">
-              We prioritise high-impact opportunities, design and build custom
-              workflows, test approaches on real data, and run evaluations in a
-              real-world environment before any full rollout.
-            </p>
-            <div class="wf-pilot-tag">Launch pilot</div>
-          </div>
-
-          <!-- Card 4 (bottom-left) -->
-          <div class="workflow-card reveal d4" id="wf4">
-            <div class="wf-stage">Stage 4</div>
-            <div class="wf-icon">
-              <!-- trending up icon -->
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-                <polyline points="16 7 22 7 22 13" />
-              </svg>
-            </div>
-            <h3 class="wf-title">AI-enabled Scaling</h3>
-            <p class="wf-sub">System Runs. You Scale.</p>
-            <p class="wf-text">
-              With reliable automation in place, you stop firefighting
-              repetitive tasks and reclaim hours every week. The system works in
-              the background so you can focus on strategy, growth, and the work
-              only you can do.
-            </p>
-          </div>
-
-          <!-- Card 3 (bottom-right) -->
-          <div class="workflow-card reveal d3" id="wf3">
-            <div class="wf-stage">Stage 3</div>
-            <div class="wf-icon">
-              <!-- gear icon -->
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="12" r="3" />
-                <path
-                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
-                />
-              </svg>
-            </div>
-            <h3 class="wf-title">Monitor &amp; Optimise</h3>
-            <p class="wf-sub">Continuous Improvement is Part of the Deal</p>
-            <p class="wf-text">
-              We launch into production with clear success metrics and
-              safeguards. We monitor performance, collect feedback, and fix
-              issues quickly, continuously refining tools, logic, and models so
-              the system improves as your business evolves.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -3119,15 +3293,20 @@
           "data-theme",
           isDark ? "dark" : "light",
         );
-        document.getElementById("themeBtn").textContent = isDark
-          ? "Light"
-          : "Dark";
       }
       function toggleTheme() {
         isDark = !isDark;
         applyTheme();
       }
       applyTheme();
+
+      /* ── Mobile Menu ── */
+      function toggleMobileMenu() {
+        document.getElementById('mobileMenu').classList.toggle('open');
+      }
+      function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('open');
+      }
 
       /* ── Scroll Reveal ── */
       const ro = new IntersectionObserver(
