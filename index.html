@@ -1570,6 +1570,18 @@
         section {
           padding: 4rem 2rem;
         }
+        .before-after-section {
+          padding: 4rem 1.5rem !important;
+        }
+        .before-after-section .hero-visual {
+          min-height: unset !important;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .before-after-section .hvd {
+          min-width: 520px;
+          width: 520px;
+        }
         .about-grid {
           grid-template-columns: 1fr;
           gap: 3rem;
@@ -1988,7 +2000,11 @@
     <!-- BEFORE / AFTER DIAGRAM -->
     <section
       class="before-after-section"
-      style="padding: 4rem 5rem; border-top: 0.5px solid var(--line)"
+      style="
+        padding: 4rem 5rem;
+        border-top: 0.5px solid var(--line);
+        overflow: hidden;
+      "
     >
       <div class="section-header reveal" style="margin-bottom: 3rem">
         <span class="section-num">03</span>
@@ -2070,6 +2086,13 @@
               <stop offset="0%" stop-color="#03caf4" />
               <stop offset="100%" stop-color="#f62681" />
             </linearGradient>
+            <!-- ClipPaths so top accent bars are clipped to rounded box shape -->
+            <clipPath id="clip-196x52">
+              <rect width="196" height="52" rx="6" />
+            </clipPath>
+            <clipPath id="clip-196x62">
+              <rect width="196" height="62" rx="6" />
+            </clipPath>
           </defs>
 
           <!-- ══════════════════════════════════════════════════ -->
@@ -2435,14 +2458,14 @@
               stroke="#03caf4"
               stroke-width="1.2"
             />
-            <!-- top accent line -->
+            <!-- top accent line drawn after main rect, clipped to box shape -->
             <rect
               x="0"
               y="0"
               width="196"
               height="3"
-              rx="6"
               fill="url(#topbar)"
+              clip-path="url(#clip-196x52)"
             />
             <!-- lightning trigger icon -->
             <path
@@ -2501,8 +2524,8 @@
               y="0"
               width="196"
               height="3"
-              rx="6"
               fill="url(#topbar)"
+              clip-path="url(#clip-196x62)"
             />
             <!-- route / branch icon -->
             <circle
@@ -2828,8 +2851,8 @@
               y="0"
               width="196"
               height="3"
-              rx="6"
               fill="url(#topbar)"
+              clip-path="url(#clip-196x52)"
             />
             <!-- upward arrow icon -->
             <path
