@@ -210,7 +210,9 @@
         justify-content: center;
         cursor: pointer;
         color: var(--text3);
-        transition: border-color 0.2s, color 0.2s;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
         padding: 0;
       }
       .theme-btn:hover {
@@ -218,16 +220,24 @@
         color: var(--accent);
       }
       /* Show sun in dark mode (click to go light), moon in light mode (click to go dark) */
-      .icon-sun { display: none; }
-      .icon-moon { display: block; }
-      [data-theme="dark"] .icon-sun { display: block; }
-      [data-theme="dark"] .icon-moon { display: none; }
+      .icon-sun {
+        display: none;
+      }
+      .icon-moon {
+        display: block;
+      }
+      [data-theme="dark"] .icon-sun {
+        display: block;
+      }
+      [data-theme="dark"] .icon-moon {
+        display: none;
+      }
       /* Nav Start button */
       /* ── Unified Start button ── */
       .btn-start {
-        background: #3a3a3a;
+        background: #000000;
         color: #ffffff;
-        border: 1px solid rgba(0,0,0,0.12);
+        border: 1px solid rgba(0, 0, 0, 0.12);
         border-radius: 6px;
         font-family: "Montserrat", sans-serif;
         letter-spacing: 0.16em;
@@ -239,23 +249,43 @@
         gap: 0.55rem;
         cursor: pointer;
         box-shadow:
-          0 2px 0 rgba(0,0,0,0.45),
-          0 4px 8px rgba(0,0,0,0.1);
-        transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+          0 2px 0 rgba(0, 0, 0, 0.45),
+          0 4px 8px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.1s,
+          box-shadow 0.1s,
+          background 0.15s;
         position: relative;
         top: 0;
+      }
+      /* Dark mode: white button with black text */
+      [data-theme="dark"] .nav-right .btn-start {
+        background: #ffffff;
+        color: #000000;
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow:
+          0 2px 0 rgba(0, 0, 0, 0.3),
+          0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+      [data-theme="dark"] .nav-right .btn-start:hover {
+        background: #f0f0f0;
+        transform: translateY(-1px);
+      }
+      [data-theme="dark"] .nav-right .btn-start:active {
+        background: #d8d8d8;
+        transform: translateY(2px);
       }
       .btn-start:hover {
         transform: translateY(-1px);
         box-shadow:
-          0 3px 0 rgba(0,0,0,0.45),
-          0 6px 12px rgba(0,0,0,0.14);
+          0 3px 0 rgba(0, 0, 0, 0.45),
+          0 6px 12px rgba(0, 0, 0, 0.14);
       }
       .btn-start:active {
         transform: translateY(2px);
         box-shadow:
-          0 0px 0 rgba(0,0,0,0.45),
-          0 1px 4px rgba(0,0,0,0.1);
+          0 0px 0 rgba(0, 0, 0, 0.45),
+          0 1px 4px rgba(0, 0, 0, 0.1);
       }
       /* Nav size */
       .btn-start.btn-start--sm {
@@ -269,49 +299,22 @@
         padding: 0.9rem 2.2rem;
         border-radius: 7px;
         box-shadow:
-          0 3px 0 rgba(0,0,0,0.45),
-          0 6px 14px rgba(0,0,0,0.12);
+          0 3px 0 rgba(0, 0, 0, 0.45),
+          0 6px 14px rgba(0, 0, 0, 0.12);
       }
       .btn-start.btn-start--lg:hover {
         box-shadow:
-          0 5px 0 rgba(0,0,0,0.45),
-          0 8px 18px rgba(0,0,0,0.16);
+          0 5px 0 rgba(0, 0, 0, 0.45),
+          0 8px 18px rgba(0, 0, 0, 0.16);
       }
       .btn-start.btn-start--lg:active {
         transform: translateY(2px);
         box-shadow:
-          0 1px 0 rgba(0,0,0,0.45),
-          0 2px 6px rgba(0,0,0,0.1);
+          0 1px 0 rgba(0, 0, 0, 0.45),
+          0 2px 6px rgba(0, 0, 0, 0.1);
       }
       /* Dark mode: flat, white pill */
-      /* Start button inside always-dark hero: always white */
-      .hero .btn-start,
-      .hero-left .btn-start {
-        background: #ffffff;
-        color: #111111;
-        border-color: rgba(255,255,255,0.15);
-        box-shadow: none;
-      }
-      .hero .btn-start:hover,
-      .hero-left .btn-start:hover {
-        background: #f0f0f0;
-        transform: none;
-        box-shadow: none;
-      }
-        background: #ffffff;
-        color: #111111;
-        border-color: rgba(255,255,255,0.15);
-        box-shadow: none;
-      }
-      [data-theme="dark"] .btn-start:hover {
-        background: #f0f0f0;
-        transform: none;
-        box-shadow: none;
-      }
-      [data-theme="dark"] .btn-start:active {
-        background: #d8d8d8;
-        transform: none;
-      }
+
       /* Hamburger */
       .hamburger {
         display: none;
@@ -344,7 +347,9 @@
         padding: 1.5rem 2rem;
         transform: translateY(-10px);
         opacity: 0;
-        transition: opacity 0.2s, transform 0.2s;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
       }
       .mobile-menu.open {
         display: block;
@@ -365,7 +370,9 @@
         text-decoration: none;
         transition: color 0.2s;
       }
-      .mobile-menu ul a:hover { color: var(--accent); }
+      .mobile-menu ul a:hover {
+        color: var(--accent);
+      }
 
       /* ─── MARQUEE ─── */
       .marquee-wrap {
@@ -481,13 +488,19 @@
       }
       .hero-sub {
         font-size: 0.9rem;
-        color: var(--text3);
+        color: #888888;
         line-height: 1.85;
         max-width: 580px;
         margin-bottom: 3rem;
-        font-weight: 300;
+        font-weight: 400;
         letter-spacing: 0.01em;
         text-align: center;
+      }
+      [data-theme="dark"] .hero-sub {
+        color: #aaaaaa;
+      }
+      :root .hero-sub {
+        color: #555555;
       }
       .hero-cta {
         display: flex;
@@ -1467,32 +1480,82 @@
         color: #fff;
       }
 
-      /* ─── HERO ALWAYS DARK ─── */
-      /* Override both :root (light) and [data-theme="dark"] so the hero
-         always renders with the dark palette regardless of user preference. */
-      .hero,
-      .hero-left {
-        --bg: #0a0a0a;
-        --bg2: #111111;
-        --bg3: #1a1a1a;
-        --text: #f0f0f0;
-        --text2: #aaaaaa;
-        --text3: #555555;
-        --accent: #f62681;
-        --accent2: #03caf4;
-        --accent-hover: #ff4da6;
-        --accent-subtle: rgba(246, 38, 129, 0.08);
-        --accent-subtle2: rgba(246, 38, 129, 0.2);
-        --accent2-subtle: rgba(3, 202, 244, 0.08);
-        --line: rgba(240, 240, 240, 0.08);
-        --line2: rgba(240, 240, 240, 0.04);
-        --card: #141414;
-        --nav-bg: rgba(10, 10, 10, 0.94);
-        --surface: #111111;
-        --border: rgba(240, 240, 240, 0.08);
-        --tag-text: #f62681;
-        background: var(--bg);
-        color: var(--text);
+      /* ─── HERO: LIGHT MODE (white bg, black text, soft blur) ─── */
+      :root:not([data-theme="dark"]) .hero,
+      :root:not([data-theme="dark"]) .hero-left {
+        background: #ffffff;
+        color: #111111;
+        position: relative;
+      }
+      :root:not([data-theme="dark"]) .hero::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 0, 0, 0.07) 0%,
+          rgba(0, 0, 0, 0.03) 45%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      :root:not([data-theme="dark"]) .hero-left {
+        position: relative;
+        z-index: 1;
+      }
+      :root:not([data-theme="dark"]) .hero .hero-h1 {
+        color: #000000;
+      }
+      :root:not([data-theme="dark"]) .hero-sub {
+        color: #555555;
+      }
+      /* Hero button: black in light mode */
+      :root:not([data-theme="dark"]) .hero .btn-start,
+      :root:not([data-theme="dark"]) .hero-left .btn-start {
+        background: #000000;
+        color: #ffffff;
+        border-color: rgba(0, 0, 0, 0.12);
+        box-shadow: none;
+      }
+      :root:not([data-theme="dark"]) .hero .btn-start:hover,
+      :root:not([data-theme="dark"]) .hero-left .btn-start:hover {
+        background: #1a1a1a;
+        transform: none;
+        box-shadow: none;
+      }
+
+      /* ─── HERO: DARK MODE (black bg, white text) ─── */
+      [data-theme="dark"] .hero,
+      [data-theme="dark"] .hero-left {
+        background: #0a0a0a;
+        color: #f0f0f0;
+        position: relative;
+      }
+      [data-theme="dark"] .hero .hero-h1 {
+        color: #f0f0f0;
+      }
+      [data-theme="dark"] .hero-sub {
+        color: #aaaaaa;
+      }
+      /* Hero button: white in dark mode */
+      [data-theme="dark"] .hero .btn-start,
+      [data-theme="dark"] .hero-left .btn-start {
+        background: #ffffff;
+        color: #000000;
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: none;
+      }
+      [data-theme="dark"] .hero .btn-start:hover,
+      [data-theme="dark"] .hero-left .btn-start:hover {
+        background: #f0f0f0;
+        transform: none;
+        box-shadow: none;
       }
 
       /* ─── LIGHT MODE EXTRA DEPTH ─── */
@@ -1676,7 +1739,7 @@
           </svg>
         </button>
         <a href="#contact" class="btn-start btn-start--sm"
-          >Start<svg
+          >Let's talk<svg
             width="11"
             height="11"
             viewBox="0 0 14 14"
@@ -1744,7 +1807,7 @@
         </p>
         <div class="hero-cta" style="justify-content: center">
           <a href="#contact" class="btn-start btn-start--lg"
-            >Start<svg
+            >Let's talk<svg
               width="14"
               height="14"
               viewBox="0 0 14 14"
@@ -1760,242 +1823,6 @@
       </div>
     </section>
 
-    <!-- APPROACH / HOW IT WORKS -->
-    <section class="approach" id="approach">
-      <div class="section-header reveal">
-        <span class="section-num">01</span>
-        <h2 class="section-title">How it works</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="workflow-outer" id="workflowOuter">
-        <svg class="workflow-svg" id="workflowSvg" aria-hidden="true"></svg>
-
-        <div class="workflow-grid" id="workflowGrid">
-          <!-- Card 1 -->
-          <div class="workflow-card reveal d1" id="wf1">
-            <div class="wf-stage">Stage 1</div>
-            <div class="wf-icon">
-              <!-- location/pin icon -->
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
-                />
-                <circle cx="12" cy="9" r="2.5" />
-              </svg>
-            </div>
-            <h3 class="wf-title">Discover &amp; Diagnose</h3>
-            <p class="wf-sub">
-              A clear look at how your business really works.
-            </p>
-            <p class="wf-text">
-              A free 30-minute session where we audit your processes, identify
-              bottlenecks, and map where AI can make the biggest difference. We
-              learn your goals, constraints, handoffs, and what success looks
-              like.
-            </p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="workflow-card reveal d2" id="wf2">
-            <div class="wf-stage">Stage 2</div>
-            <div class="wf-icon">
-              <!-- DNA icon -->
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M5 3c0 0 4 1.5 4 6s-4 6-4 9" />
-                <path d="M19 3c0 0-4 1.5-4 6s4 6 4 9" />
-                <path d="M5.5 6.5h13" />
-                <path d="M5.5 10.5h13" />
-                <path d="M5.5 14.5h13" />
-              </svg>
-            </div>
-            <h3 class="wf-title">Proposal</h3>
-            <p class="wf-sub">We define the work before building or billing.</p>
-            <p class="wf-text">
-              You receive a clear scope, timeline, and fixed price, so there are
-              no surprises. You know exactly what is included before we begin.
-            </p>
-            <div class="wf-pilot-tag">Launch pilot</div>
-          </div>
-
-          <!-- Card 4 (bottom-left) -->
-          <div class="workflow-card reveal d4" id="wf4">
-            <div class="wf-stage">Stage 4</div>
-            <div class="wf-icon">
-              <!-- trending up icon -->
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-                <polyline points="16 7 22 7 22 13" />
-              </svg>
-            </div>
-            <h3 class="wf-title">Monitor &amp; Optimise</h3>
-            <p class="wf-sub">The system runs. You scale.</p>
-            <p class="wf-text">
-              Once the system is live, we continue tracking performance,
-              gathering feedback, and making improvements where needed. That
-              way, your automation stays reliable, useful, and aligned with how
-              your business evolves.
-            </p>
-          </div>
-
-          <!-- Card 3 (bottom-right) -->
-          <div class="workflow-card reveal d3" id="wf3">
-            <div class="wf-stage">Stage 3</div>
-            <div class="wf-icon">
-              <!-- gear icon -->
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="12" r="3" />
-                <path
-                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
-                />
-              </svg>
-            </div>
-            <h3 class="wf-title">Project</h3>
-            <p class="wf-sub">Build the right thing, the right way.</p>
-            <p class="wf-text">
-              We build, test, and deploy your systems. You get weekly updates
-              and a working product throughout the process. Then we monitor
-              performance, gather feedback, fix issues quickly, and keep
-              refining the system as your business changes.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHAT AWAITS YOU -->
-    <section class="awaits-section">
-      <h2 class="awaits-headline reveal">What awaits you on the other side?</h2>
-      <div class="awaits-grid">
-        <div class="awaits-card reveal d1">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Working 16 hours a day putting out fires</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >An operation that runs without demanding your energy 24/7</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d2">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Spending hours every week reposting listings just to stay
-              visible</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >A content engine that publishes your listings automatically. No
-              writing. No formatting. No manual posting</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d3">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text">Wasting money on unnecessary hires</span>
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >Streamlined systems that replace manual work and reduce
-              overhead</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d1">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Being stuck in low-value, repetitive tasks</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >Focusing only on high-impact work that actually drives
-              growth</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d2">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Everything depends on you getting it done</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >A business that moves forward even when you're not involved</span
-            >
-          </div>
-        </div>
-
-        <div class="awaits-card reveal d3">
-          <div class="awaits-half awaits-bad">
-            <span class="awaits-icon">✗</span>
-            <span class="awaits-text"
-              >Constantly reacting, fixing, chasing</span
-            >
-          </div>
-          <div class="awaits-divider"></div>
-          <div class="awaits-half awaits-good">
-            <span class="awaits-icon">✓</span>
-            <span class="awaits-text"
-              >Quiet systems working in the background, keeping everything
-              running</span
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- BEFORE / AFTER DIAGRAM -->
     <section
       class="before-after-section"
@@ -2006,7 +1833,7 @@
       "
     >
       <div class="section-header reveal" style="margin-bottom: 3rem">
-        <span class="section-num">03</span>
+        <span class="section-num">01</span>
         <h2 class="section-title">Before &amp; After</h2>
         <div class="section-line"></div>
       </div>
@@ -2910,43 +2737,10 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="about" id="about">
-      <div class="section-header reveal">
-        <span class="section-num">04</span>
-        <h2 class="section-title">About</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="about-grid">
-        <div class="about-text">
-          <p class="reveal d1">
-            I'm a Dublin-based AI Automation Consultant focused on scalable
-            systems that actually enables business growth.
-          </p>
-          <p class="reveal d2">
-            The gap between small businesses and large ones is closing and AI is
-            closing it. The right systems give you the speed, consistency, and
-            capacity to compete at a level that used to require a much bigger
-            team. I build those systems, and I measure my success by what they
-            deliver for yours.
-          </p>
-        </div>
-        <div class="about-aside">
-          <div class="profile-photo-wrap reveal d1">
-            <img
-              src="images/profile.png"
-              alt="Rae McDowell"
-              class="profile-photo"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- CASE STUDIES -->
     <section class="services" id="services">
       <div class="section-header reveal">
-        <span class="section-num">05</span>
+        <span class="section-num">02</span>
         <h2 class="section-title">Case studies</h2>
         <div class="section-line"></div>
       </div>
@@ -2966,7 +2760,6 @@
       <div class="cs-grid">
         <div class="cs-card reveal d1">
           <div class="cs-card-inner">
-            <div class="cs-num">01</div>
             <div class="cs-icon">
               <svg
                 width="28"
@@ -3010,7 +2803,6 @@
 
         <div class="cs-card reveal d2">
           <div class="cs-card-inner">
-            <div class="cs-num">02</div>
             <div class="cs-icon">
               <svg
                 width="28"
@@ -3052,6 +2844,274 @@
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
+        </div>
+      </div>
+    </section>
+    <!-- APPROACH / HOW IT WORKS -->
+    <section class="approach" id="approach">
+      <div class="section-header reveal">
+        <span class="section-num">03</span>
+        <h2 class="section-title">How it works</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="workflow-outer" id="workflowOuter">
+        <svg class="workflow-svg" id="workflowSvg" aria-hidden="true"></svg>
+
+        <div class="workflow-grid" id="workflowGrid">
+          <!-- Card 1 -->
+          <div class="workflow-card reveal d1" id="wf1">
+            <div class="wf-stage">Stage 1</div>
+            <div class="wf-icon">
+              <!-- location/pin icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+            </div>
+            <h3 class="wf-title">Discover &amp; Diagnose</h3>
+            <p class="wf-sub">
+              A clear look at how your business really works.
+            </p>
+            <p class="wf-text">
+              A free 30-minute session where we audit your processes, identify
+              bottlenecks, and map where AI can make the biggest difference. We
+              learn your goals, constraints, handoffs, and what success looks
+              like.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="workflow-card reveal d2" id="wf2">
+            <div class="wf-stage">Stage 2</div>
+            <div class="wf-icon">
+              <!-- DNA icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 3c0 0 4 1.5 4 6s-4 6-4 9" />
+                <path d="M19 3c0 0-4 1.5-4 6s4 6 4 9" />
+                <path d="M5.5 6.5h13" />
+                <path d="M5.5 10.5h13" />
+                <path d="M5.5 14.5h13" />
+              </svg>
+            </div>
+            <h3 class="wf-title">Proposal</h3>
+            <p class="wf-sub">We define the work before building or billing.</p>
+            <p class="wf-text">
+              You receive a clear scope, timeline, and fixed price, so there are
+              no surprises. You know exactly what is included before we begin.
+            </p>
+            <div class="wf-pilot-tag">Launch pilot</div>
+          </div>
+
+          <!-- Card 4 (bottom-left) -->
+          <div class="workflow-card reveal d4" id="wf4">
+            <div class="wf-stage">Stage 4</div>
+            <div class="wf-icon">
+              <!-- trending up icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                <polyline points="16 7 22 7 22 13" />
+              </svg>
+            </div>
+            <h3 class="wf-title">Monitor &amp; Optimise</h3>
+            <p class="wf-sub">The system runs. You scale.</p>
+            <p class="wf-text">
+              Once the system is live, we continue tracking performance,
+              gathering feedback, and making improvements where needed. That
+              way, your automation stays reliable, useful, and aligned with how
+              your business evolves.
+            </p>
+          </div>
+
+          <!-- Card 3 (bottom-right) -->
+          <div class="workflow-card reveal d3" id="wf3">
+            <div class="wf-stage">Stage 3</div>
+            <div class="wf-icon">
+              <!-- gear icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+                />
+              </svg>
+            </div>
+            <h3 class="wf-title">Project</h3>
+            <p class="wf-sub">Build the right thing, the right way.</p>
+            <p class="wf-text">
+              We build, test, and deploy your systems. You get weekly updates
+              and a working product throughout the process. Then we monitor
+              performance, gather feedback, fix issues quickly, and keep
+              refining the system as your business changes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT AWAITS YOU -->
+    <section class="awaits-section">
+      <h2 class="awaits-headline reveal">What awaits you on the other side?</h2>
+      <div class="awaits-grid">
+        <div class="awaits-card reveal d1">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Working 16 hours a day putting out fires</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >An operation that runs without demanding your energy 24/7</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d2">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Spending hours every week reposting listings just to stay
+              visible</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >A content engine that publishes your listings automatically. No
+              writing. No formatting. No manual posting</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d3">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text">Wasting money on unnecessary hires</span>
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >Streamlined systems that replace manual work and reduce
+              overhead</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d1">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Being stuck in low-value, repetitive tasks</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >Focusing only on high-impact work that actually drives
+              growth</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d2">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Everything depends on you getting it done</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >A business that moves forward even when you're not involved</span
+            >
+          </div>
+        </div>
+
+        <div class="awaits-card reveal d3">
+          <div class="awaits-half awaits-bad">
+            <span class="awaits-icon">✗</span>
+            <span class="awaits-text"
+              >Constantly reacting, fixing, chasing</span
+            >
+          </div>
+          <div class="awaits-divider"></div>
+          <div class="awaits-half awaits-good">
+            <span class="awaits-icon">✓</span>
+            <span class="awaits-text"
+              >Quiet systems working in the background, keeping everything
+              running</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="section-header reveal">
+        <span class="section-num">05</span>
+        <h2 class="section-title">About</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="reveal d1">
+            I'm a Dublin-based AI Automation Consultant focused on scalable
+            systems that actually enables business growth.
+          </p>
+          <p class="reveal d2">
+            The gap between small businesses and large ones is closing and AI is
+            closing it. The right systems give you the speed, consistency, and
+            capacity to compete at a level that used to require a much bigger
+            team. I build those systems, and I measure my success by what they
+            deliver for yours.
+          </p>
+        </div>
+        <div class="about-aside">
+          <div class="profile-photo-wrap reveal d1">
+            <img
+              src="images/profile.png"
+              alt="Rae McDowell"
+              class="profile-photo"
+            />
+          </div>
         </div>
       </div>
     </section>
