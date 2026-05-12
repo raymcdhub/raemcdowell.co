@@ -259,7 +259,8 @@
         top: 0;
       }
       /* Dark mode: white button with black text */
-      [data-theme="dark"] .nav-right .btn-start {
+      [data-theme="dark"] .nav-right .btn-start,
+      [data-theme="dark"] .awaits-cta .btn-start {
         background: #ffffff;
         color: #000000;
         border-color: rgba(255, 255, 255, 0.15);
@@ -267,11 +268,13 @@
           0 2px 0 rgba(0, 0, 0, 0.3),
           0 4px 8px rgba(0, 0, 0, 0.15);
       }
-      [data-theme="dark"] .nav-right .btn-start:hover {
+      [data-theme="dark"] .nav-right .btn-start:hover,
+      [data-theme="dark"] .awaits-cta .btn-start:hover {
         background: #f0f0f0;
         transform: translateY(-1px);
       }
-      [data-theme="dark"] .nav-right .btn-start:active {
+      [data-theme="dark"] .nav-right .btn-start:active,
+      [data-theme="dark"] .awaits-cta .btn-start:active {
         background: #d8d8d8;
         transform: translateY(2px);
       }
@@ -4027,6 +4030,24 @@
             >
           </div>
         </div>
+      </div>
+      <div
+        class="hero-cta awaits-cta reveal"
+        style="justify-content: center; margin-top: 3.5rem"
+      >
+        <a href="#contact" class="btn-start btn-start--lg"
+          >Book a Call<svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M2 7h10M8 3l4 4-4 4" /></svg
+        ></a>
       </div>
     </section>
 
