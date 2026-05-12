@@ -1642,8 +1642,8 @@
           -webkit-overflow-scrolling: touch;
         }
         .before-after-section .hvd {
-          min-width: 520px;
-          width: 520px;
+          min-width: 680px;
+          width: 680px;
         }
         .about-grid {
           grid-template-columns: 1fr;
@@ -1685,6 +1685,289 @@
           align-items: flex-start;
           gap: 1rem;
         }
+      }
+      /* ─── BEFORE/AFTER MOBILE CARDS ─── */
+      .ba-mobile {
+        display: none;
+      }
+      .ba-desktop {
+        display: block;
+      }
+
+      @media (max-width: 900px) {
+        .ba-mobile {
+          display: block;
+        }
+        .ba-desktop {
+          display: none !important;
+        }
+        .before-after-section {
+          padding: 4rem 0 !important;
+          overflow: hidden;
+        }
+        .before-after-section .section-header {
+          padding: 0 1.5rem;
+        }
+      }
+
+      .ba-scroll-hint {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 1rem;
+      }
+      .ba-scroll-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--text3);
+        transition:
+          background 0.3s,
+          transform 0.3s;
+        cursor: pointer;
+      }
+      .ba-scroll-dot.active {
+        background: var(--accent);
+        transform: scale(1.4);
+      }
+
+      .ba-scroll-track {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 0;
+        padding-bottom: 0.5rem;
+      }
+      .ba-scroll-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .ba-card {
+        flex: 0 0 90vw;
+        max-width: 380px;
+        scroll-snap-align: center;
+        background: #0a0a0a;
+        border: 0.5px solid var(--line);
+        margin: 0 0.75rem;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+      }
+      .ba-card--before {
+        border-top: 2px solid #cc3333;
+      }
+      .ba-card--ai {
+        border-top: 2px solid transparent;
+        border-image: linear-gradient(90deg, #03caf4, #f62681) 1;
+        align-items: center;
+        text-align: center;
+      }
+      .ba-card--after {
+        border-top: 2px solid #03caf4;
+      }
+
+      /* First and last card: allow seeing edge of adjacent card */
+      .ba-card:first-child {
+        margin-left: 5vw;
+      }
+      .ba-card:last-child {
+        margin-right: 5vw;
+      }
+
+      .ba-card-label {
+        font-family: "DM Mono", monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #cc3333;
+      }
+      .ba-card-label--ai {
+        background: linear-gradient(90deg, #03caf4, #f62681);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
+      .ba-card-label--after {
+        color: #03caf4;
+      }
+
+      .ba-donut-wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .ba-donut {
+        width: 110px;
+        height: 110px;
+      }
+
+      .ba-subhead {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #f0f0f0;
+        letter-spacing: -0.01em;
+        text-align: center;
+      }
+      .ba-subhead--cyan {
+        color: #03caf4;
+      }
+
+      .ba-subdesc {
+        font-family: "DM Mono", monospace;
+        font-size: 0.55rem;
+        color: #555;
+        text-align: center;
+        letter-spacing: 0.08em;
+      }
+
+      .ba-bars-label {
+        font-family: "DM Mono", monospace;
+        font-size: 0.52rem;
+        letter-spacing: 0.15em;
+        color: #444;
+        margin-top: 0.25rem;
+      }
+
+      .ba-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        width: 100%;
+      }
+
+      .ba-bar-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .ba-bar-name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.68rem;
+        color: #999;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .ba-bar-track {
+        width: 80px;
+        height: 5px;
+        background: #1c1c1c;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .ba-bar-fill {
+        height: 100%;
+        border-radius: 2px;
+        /* bars fill from 0 on load */
+        width: 0 !important;
+        transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .ba-bar-fill.animated {
+        width: var(--target-w) !important;
+      }
+      .ba-bar-fill--red {
+        background: #cc3333;
+        opacity: 0.75;
+      }
+      .ba-bar-fill--cyan {
+        background: #03caf4;
+        opacity: 0.8;
+      }
+
+      .ba-bar-pct {
+        font-family: "DM Mono", monospace;
+        font-size: 0.6rem;
+        min-width: 2.5ch;
+        text-align: right;
+      }
+      .ba-pct--red {
+        color: #cc3333;
+      }
+      .ba-pct--cyan {
+        color: #03caf4;
+      }
+
+      .ba-outcome {
+        background: rgba(204, 34, 34, 0.07);
+        border: 0.5px solid rgba(204, 34, 34, 0.22);
+        border-radius: 4px;
+        padding: 0.75rem 0.85rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.72rem;
+        color: #888;
+        line-height: 1.6;
+        margin-top: 0.25rem;
+      }
+      .ba-outcome--cyan {
+        background: rgba(3, 202, 244, 0.06);
+        border-color: rgba(3, 202, 244, 0.22);
+      }
+      .ba-outcome-label {
+        display: block;
+        font-family: "DM Mono", monospace;
+        font-size: 0.52rem;
+        letter-spacing: 0.14em;
+        color: #cc3333;
+        margin-bottom: 0.3rem;
+      }
+      .ba-outcome-label--cyan {
+        color: #03caf4;
+      }
+
+      /* AI card specifics */
+      .ba-ai-orb {
+        width: 130px;
+        height: 130px;
+      }
+      .ba-ai-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .ba-ai-desc {
+        font-family: "DM Mono", monospace;
+        font-size: 0.6rem;
+        color: #666;
+        text-align: center;
+        line-height: 1.65;
+        letter-spacing: 0.04em;
+        max-width: 240px;
+      }
+
+      .ba-pills {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        margin-top: 0.25rem;
+      }
+      .ba-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.45rem 0.85rem;
+        border-radius: 20px;
+        font-family: "DM Mono", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.06em;
+      }
+      .ba-pill--cyan {
+        background: rgba(3, 202, 244, 0.07);
+        border: 0.5px solid rgba(3, 202, 244, 0.22);
+        color: #03caf4;
+      }
+      .ba-pill--pink {
+        background: rgba(246, 38, 129, 0.07);
+        border: 0.5px solid rgba(246, 38, 129, 0.22);
+        color: #f62681;
       }
     </style>
   </head>
@@ -1837,35 +2120,473 @@
         <h2 class="section-title">Before &amp; After</h2>
         <div class="section-line"></div>
       </div>
+
+      <!-- MOBILE: horizontal scroll-snap cards -->
+      <div class="ba-mobile reveal">
+        <!-- scroll hint -->
+        <div class="ba-scroll-hint">
+          <span class="ba-scroll-dot active" data-idx="0"></span>
+          <span class="ba-scroll-dot" data-idx="1"></span>
+          <span class="ba-scroll-dot" data-idx="2"></span>
+        </div>
+        <div class="ba-scroll-track" id="baTrack">
+          <!-- CARD 1: BEFORE -->
+          <div class="ba-card ba-card--before">
+            <div class="ba-card-label">BEFORE</div>
+            <div class="ba-donut-wrap">
+              <svg viewBox="0 0 120 120" class="ba-donut">
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="46"
+                  stroke="#2a2a2a"
+                  stroke-width="16"
+                  fill="none"
+                />
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="46"
+                  stroke="#cc3333"
+                  stroke-width="16"
+                  fill="none"
+                  stroke-dasharray="57.8 231.2"
+                  stroke-dashoffset="72.2"
+                  stroke-linecap="butt"
+                  opacity="0.75"
+                />
+                <text
+                  x="60"
+                  y="55"
+                  text-anchor="middle"
+                  font-family="'Montserrat',sans-serif"
+                  font-size="20"
+                  font-weight="700"
+                  fill="#cc3333"
+                >
+                  20%
+                </text>
+                <text
+                  x="60"
+                  y="70"
+                  text-anchor="middle"
+                  font-family="'DM Mono',monospace"
+                  font-size="8"
+                  fill="#666"
+                >
+                  Growth Work
+                </text>
+              </svg>
+            </div>
+            <div class="ba-subhead">BUSY WITH LOW VALUE TASKS</div>
+            <div class="ba-subdesc">Limited capacity. Limited growth.</div>
+            <div class="ba-bars-label">TIME SPENT ON...</div>
+            <div class="ba-bars">
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Email &amp; Inbox Management</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--red"
+                    style="width: 25%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--red">25%</span>
+              </div>
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Data Entry &amp; Reporting</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--red"
+                    style="width: 20%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--red">20%</span>
+              </div>
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Scheduling &amp; Follow Ups</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--red"
+                    style="width: 15%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--red">15%</span>
+              </div>
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Customer Support (Tier 1)</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--red"
+                    style="width: 15%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--red">15%</span>
+              </div>
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Admin &amp; Repetitive Tasks</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--red"
+                    style="width: 25%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--red">25%</span>
+              </div>
+            </div>
+            <div class="ba-outcome ba-outcome--red">
+              <span class="ba-outcome-label">OUTCOME</span>
+              Stuck in the day-to-day. Growth is slow. Capacity capped.
+            </div>
+          </div>
+
+          <!-- CARD 2: AI AUTOMATION -->
+          <div class="ba-card ba-card--ai">
+            <div class="ba-card-label ba-card-label--ai">AI AUTOMATION</div>
+            <div class="ba-ai-orb">
+              <svg viewBox="0 0 120 120" class="ba-ai-svg">
+                <defs>
+                  <radialGradient id="orb-glow" cx="50%" cy="50%" r="50%">
+                    <stop
+                      offset="0%"
+                      stop-color="#f62681"
+                      stop-opacity="0.25"
+                    />
+                    <stop
+                      offset="60%"
+                      stop-color="#03caf4"
+                      stop-opacity="0.08"
+                    />
+                    <stop offset="100%" stop-color="#03caf4" stop-opacity="0" />
+                  </radialGradient>
+                  <filter
+                    id="glow-m"
+                    x="-40%"
+                    y="-40%"
+                    width="180%"
+                    height="180%"
+                  >
+                    <feGaussianBlur stdDeviation="3" result="b" />
+                    <feMerge>
+                      <feMergeNode in="b" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <circle cx="60" cy="60" r="50" fill="url(#orb-glow)" />
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="42"
+                  stroke="url(#orb-glow)"
+                  stroke-width="0.8"
+                  fill="none"
+                  opacity="0.5"
+                />
+                <!-- central node -->
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="7"
+                  fill="#f62681"
+                  opacity="0.9"
+                  filter="url(#glow-m)"
+                />
+                <!-- satellite nodes -->
+                <circle
+                  cx="60"
+                  cy="32"
+                  r="4.5"
+                  stroke="#03caf4"
+                  stroke-width="1.2"
+                  fill="#0a0a0a"
+                />
+                <circle
+                  cx="84"
+                  cy="48"
+                  r="4.5"
+                  stroke="#03caf4"
+                  stroke-width="1.2"
+                  fill="#0a0a0a"
+                />
+                <circle
+                  cx="78"
+                  cy="78"
+                  r="4.5"
+                  stroke="#f62681"
+                  stroke-width="1.2"
+                  fill="#0a0a0a"
+                />
+                <circle
+                  cx="42"
+                  cy="78"
+                  r="4.5"
+                  stroke="#f62681"
+                  stroke-width="1.2"
+                  fill="#0a0a0a"
+                />
+                <circle
+                  cx="36"
+                  cy="48"
+                  r="4.5"
+                  stroke="#03caf4"
+                  stroke-width="1.2"
+                  fill="#0a0a0a"
+                />
+                <!-- connections -->
+                <line
+                  x1="60"
+                  y1="53"
+                  x2="60"
+                  y2="37"
+                  stroke="#03caf4"
+                  stroke-width="1"
+                  opacity="0.6"
+                />
+                <line
+                  x1="67"
+                  y1="56"
+                  x2="80"
+                  y2="51"
+                  stroke="#03caf4"
+                  stroke-width="1"
+                  opacity="0.6"
+                />
+                <line
+                  x1="65"
+                  y1="65"
+                  x2="74"
+                  y2="74"
+                  stroke="#f62681"
+                  stroke-width="1"
+                  opacity="0.6"
+                />
+                <line
+                  x1="55"
+                  y1="65"
+                  x2="46"
+                  y2="74"
+                  stroke="#f62681"
+                  stroke-width="1"
+                  opacity="0.6"
+                />
+                <line
+                  x1="53"
+                  y1="56"
+                  x2="40"
+                  y2="51"
+                  stroke="#03caf4"
+                  stroke-width="1"
+                  opacity="0.6"
+                />
+              </svg>
+            </div>
+            <p class="ba-ai-desc">
+              Handles repetitive, rule-based tasks accurately and 24/7
+            </p>
+            <div class="ba-pills">
+              <div class="ba-pill ba-pill--cyan">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="6"
+                    stroke="#03caf4"
+                    stroke-width="1.4"
+                  />
+                  <line
+                    x1="8"
+                    y1="5"
+                    x2="8"
+                    y2="8"
+                    stroke="#03caf4"
+                    stroke-width="1.2"
+                  />
+                  <line
+                    x1="8"
+                    y1="8"
+                    x2="11"
+                    y2="10"
+                    stroke="#03caf4"
+                    stroke-width="1.2"
+                  />
+                </svg>
+                Saves Time
+              </div>
+              <div class="ba-pill ba-pill--pink">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="6"
+                    stroke="#f62681"
+                    stroke-width="1.4"
+                  />
+                  <path
+                    d="M5 8l2 2 4-4"
+                    stroke="#f62681"
+                    stroke-width="1.3"
+                    stroke-linecap="round"
+                    fill="none"
+                  />
+                </svg>
+                Improves Accuracy
+              </div>
+              <div class="ba-pill ba-pill--cyan">
+                <!-- growth graph line icon: flat then rising -->
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                  <polyline
+                    points="1,13 5,13 10,7 15,2"
+                    stroke="#03caf4"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    fill="none"
+                  />
+                  <circle cx="15" cy="2" r="1.5" fill="#03caf4" />
+                </svg>
+                Scales Effortlessly
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: AFTER -->
+          <div class="ba-card ba-card--after">
+            <div class="ba-card-label ba-card-label--after">AFTER</div>
+            <div class="ba-donut-wrap">
+              <svg viewBox="0 0 120 120" class="ba-donut">
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="46"
+                  stroke="#1a2a1a"
+                  stroke-width="16"
+                  fill="none"
+                />
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="46"
+                  stroke="#03caf4"
+                  stroke-width="16"
+                  fill="none"
+                  stroke-dasharray="231.2 57.8"
+                  stroke-dashoffset="72.2"
+                  stroke-linecap="butt"
+                  opacity="0.85"
+                />
+                <text
+                  x="60"
+                  y="55"
+                  text-anchor="middle"
+                  font-family="'Montserrat',sans-serif"
+                  font-size="20"
+                  font-weight="700"
+                  fill="#03caf4"
+                >
+                  80%
+                </text>
+                <text
+                  x="60"
+                  y="70"
+                  text-anchor="middle"
+                  font-family="'DM Mono',monospace"
+                  font-size="8"
+                  fill="#666"
+                >
+                  Growth Work
+                </text>
+              </svg>
+            </div>
+            <div class="ba-subhead ba-subhead--cyan">
+              FOCUSED ON HIGH IMPACT WORK
+            </div>
+            <div class="ba-subdesc">More capacity. More growth.</div>
+            <div class="ba-bars-label">TIME SPENT ON...</div>
+            <div class="ba-bars">
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Strategy &amp; Vision</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--cyan"
+                    style="width: 30%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--cyan">30%</span>
+              </div>
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Product &amp; Innovation</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--cyan"
+                    style="width: 25%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--cyan">25%</span>
+              </div>
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Growth &amp; Marketing</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--cyan"
+                    style="width: 20%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--cyan">20%</span>
+              </div>
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Partnerships &amp; Sales</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--cyan"
+                    style="width: 15%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--cyan">15%</span>
+              </div>
+              <div class="ba-bar-row">
+                <span class="ba-bar-name">Team &amp; Culture</span>
+                <div class="ba-bar-track">
+                  <div
+                    class="ba-bar-fill ba-bar-fill--cyan"
+                    style="width: 10%"
+                  ></div>
+                </div>
+                <span class="ba-bar-pct ba-pct--cyan">10%</span>
+              </div>
+            </div>
+            <div class="ba-outcome ba-outcome--cyan">
+              <span class="ba-outcome-label ba-outcome-label--cyan"
+                >OUTCOME</span
+              >
+              Focused on what drives growth. Business scales. Impact multiplies.
+            </div>
+          </div>
+        </div>
+        <!-- /ba-scroll-track -->
+      </div>
+      <!-- /ba-mobile -->
+
+      <!-- DESKTOP: SVG (hidden on mobile) -->
       <div
-        class="hero-visual reveal"
+        class="hero-visual reveal ba-desktop"
         style="
           height: auto;
-          min-height: 420px;
           border: 0.5px solid var(--line);
           background: #0a0a0a !important;
+          padding: 0;
+          overflow: hidden;
         "
       >
         <svg
           class="hvd"
-          viewBox="0 0 520 370"
+          viewBox="0 0 760 500"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          style="max-width: 100%; display: block"
         >
           <defs>
-            <!-- Arrow markers -->
             <marker
-              id="a-grey"
-              markerWidth="7"
-              markerHeight="7"
-              refX="6"
-              refY="3.5"
-              orient="auto"
-            >
-              <path d="M0,0.5 L6,3.5 L0,6.5 Z" fill="#888" />
-            </marker>
-            <marker
-              id="a-pink"
+              id="arr-pink"
               markerWidth="7"
               markerHeight="7"
               refX="6"
@@ -1875,7 +2596,7 @@
               <path d="M0,0.5 L6,3.5 L0,6.5 Z" fill="#f62681" />
             </marker>
             <marker
-              id="a-cyan"
+              id="arr-cyan"
               markerWidth="7"
               markerHeight="7"
               refX="6"
@@ -1884,857 +2605,1081 @@
             >
               <path d="M0,0.5 L6,3.5 L0,6.5 Z" fill="#03caf4" />
             </marker>
-            <!-- Glow for core node -->
-            <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="4" result="b" />
+            <filter id="glow2" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="5" result="b" />
               <feMerge>
                 <feMergeNode in="b" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-            <!-- Subtle drop shadow for nodes -->
-            <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+            <filter id="sh2" x="-10%" y="-10%" width="125%" height="135%">
               <feDropShadow
                 dx="0"
                 dy="2"
-                stdDeviation="3"
+                stdDeviation="4"
                 flood-color="#000"
-                flood-opacity="0.18"
+                flood-opacity="0.35"
               />
             </filter>
-            <!-- Gradient for "after" pipe lines -->
-            <linearGradient id="pipe" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#03caf4" stop-opacity="0.7" />
-              <stop offset="100%" stop-color="#f62681" stop-opacity="0.7" />
+            <linearGradient id="grad-ai" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#03caf4" stop-opacity="0.18" />
+              <stop offset="100%" stop-color="#f62681" stop-opacity="0.18" />
             </linearGradient>
-            <!-- Top bar gradient for core node -->
-            <linearGradient id="topbar" x1="0" y1="0" x2="1" y2="0">
+            <linearGradient id="grad-border" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stop-color="#03caf4" />
               <stop offset="100%" stop-color="#f62681" />
             </linearGradient>
-            <!-- ClipPaths so top accent bars are clipped to rounded box shape -->
-            <clipPath id="clip-196x52">
-              <rect width="196" height="52" rx="6" />
-            </clipPath>
-            <clipPath id="clip-196x62">
-              <rect width="196" height="62" rx="6" />
-            </clipPath>
           </defs>
 
-          <!-- ══════════════════════════════════════════════════ -->
-          <!-- SECTION LABELS                                      -->
-          <!-- ══════════════════════════════════════════════════ -->
+          <!-- ── Background panels ── -->
+          <!-- Before panel -->
+          <rect
+            x="0"
+            y="0"
+            width="242"
+            height="500"
+            fill="#111"
+            opacity="0.6"
+          />
+          <!-- After panel -->
+          <rect
+            x="518"
+            y="0"
+            width="242"
+            height="500"
+            fill="#0d1a1a"
+            opacity="0.6"
+          />
+          <!-- Centre AI panel -->
+          <rect x="242" y="0" width="276" height="500" fill="#0a0a0a" />
+
+          <!-- ── SECTION LABELS ── -->
+          <!-- BEFORE label -->
+          <rect
+            x="0"
+            y="0"
+            width="242"
+            height="30"
+            fill="#cc2222"
+            opacity="0.12"
+          />
           <text
-            x="118"
-            y="18"
+            x="121"
+            y="20"
             text-anchor="middle"
-            font-family="'DM Mono', monospace"
+            font-family="'DM Mono',monospace"
             font-size="9"
-            letter-spacing="2.5"
-            fill="#888"
-            style="text-transform: uppercase"
+            letter-spacing="3"
+            fill="#cc4444"
+            opacity="0.9"
           >
             BEFORE
           </text>
-          <text
-            x="370"
-            y="18"
-            text-anchor="middle"
-            font-family="'DM Mono', monospace"
-            font-size="9"
-            letter-spacing="2.5"
+
+          <!-- AFTER label -->
+          <rect
+            x="518"
+            y="0"
+            width="242"
+            height="30"
             fill="#03caf4"
-            opacity="0.85"
-            style="text-transform: uppercase"
+            opacity="0.08"
+          />
+          <text
+            x="639"
+            y="20"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="9"
+            letter-spacing="3"
+            fill="#03caf4"
+            opacity="0.9"
           >
             AFTER
           </text>
 
-          <!-- Vertical divider -->
+          <!-- ── BEFORE: Donut chart (20% growth) ── -->
+          <!-- Donut ring: 80% grey (busy tasks) -->
+          <circle
+            cx="121"
+            cy="100"
+            r="42"
+            stroke="#2a2a2a"
+            stroke-width="14"
+            fill="none"
+          />
+          <!-- 20% pink arc: stroke-dasharray for 20% of circumference (2πr≈264) → 52.8 -->
+          <circle
+            cx="121"
+            cy="100"
+            r="42"
+            stroke="#cc3333"
+            stroke-width="14"
+            fill="none"
+            stroke-dasharray="52.8 211.2"
+            stroke-dashoffset="66"
+            stroke-linecap="butt"
+            opacity="0.7"
+          />
+          <text
+            x="121"
+            y="95"
+            text-anchor="middle"
+            font-family="'Montserrat',sans-serif"
+            font-size="18"
+            font-weight="700"
+            fill="#cc3333"
+          >
+            20%
+          </text>
+          <text
+            x="121"
+            y="110"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="7"
+            fill="#666"
+          >
+            Growth Work
+          </text>
+
+          <!-- Subheader before -->
+          <text
+            x="121"
+            y="157"
+            text-anchor="middle"
+            font-family="'Montserrat',sans-serif"
+            font-size="8.5"
+            font-weight="600"
+            fill="#f0f0f0"
+          >
+            BUSY WITH LOW VALUE TASKS
+          </text>
+          <text
+            x="121"
+            y="170"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="7"
+            fill="#555"
+          >
+            Limited capacity. Limited growth.
+          </text>
+
+          <!-- TIME SPENT label -->
+          <text
+            x="14"
+            y="190"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            letter-spacing="1.2"
+            fill="#555"
+          >
+            TIME SPENT ON...
+          </text>
+
+          <!-- Before task bars -->
+          <!-- Email & Inbox Management 25% -->
+          <text
+            x="14"
+            y="207"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Email &amp; Inbox Management
+          </text>
+          <rect x="14" y="210" width="214" height="5" rx="2" fill="#222" />
+          <rect
+            x="14"
+            y="210"
+            width="53"
+            height="5"
+            rx="2"
+            fill="#cc3333"
+            opacity="0.7"
+          />
+          <text
+            x="232"
+            y="216"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#cc3333"
+          >
+            25%
+          </text>
+
+          <!-- Data Entry & Reporting 20% -->
+          <text
+            x="14"
+            y="228"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Data Entry &amp; Reporting
+          </text>
+          <rect x="14" y="231" width="214" height="5" rx="2" fill="#222" />
+          <rect
+            x="14"
+            y="231"
+            width="43"
+            height="5"
+            rx="2"
+            fill="#cc3333"
+            opacity="0.7"
+          />
+          <text
+            x="232"
+            y="237"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#cc3333"
+          >
+            20%
+          </text>
+
+          <!-- Scheduling & Follow Ups 15% -->
+          <text
+            x="14"
+            y="249"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Scheduling &amp; Follow Ups
+          </text>
+          <rect x="14" y="252" width="214" height="5" rx="2" fill="#222" />
+          <rect
+            x="14"
+            y="252"
+            width="32"
+            height="5"
+            rx="2"
+            fill="#cc3333"
+            opacity="0.7"
+          />
+          <text
+            x="232"
+            y="258"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#cc3333"
+          >
+            15%
+          </text>
+
+          <!-- Customer Support 15% -->
+          <text
+            x="14"
+            y="270"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Customer Support (Tier 1)
+          </text>
+          <rect x="14" y="273" width="214" height="5" rx="2" fill="#222" />
+          <rect
+            x="14"
+            y="273"
+            width="32"
+            height="5"
+            rx="2"
+            fill="#cc3333"
+            opacity="0.7"
+          />
+          <text
+            x="232"
+            y="279"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#cc3333"
+          >
+            15%
+          </text>
+
+          <!-- Admin & Repetitive 25% -->
+          <text
+            x="14"
+            y="291"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Admin &amp; Repetitive Tasks
+          </text>
+          <rect x="14" y="294" width="214" height="5" rx="2" fill="#222" />
+          <rect
+            x="14"
+            y="294"
+            width="53"
+            height="5"
+            rx="2"
+            fill="#cc3333"
+            opacity="0.7"
+          />
+          <text
+            x="232"
+            y="300"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#cc3333"
+          >
+            25%
+          </text>
+
+          <!-- Before outcome box -->
+          <rect
+            x="10"
+            y="320"
+            width="222"
+            height="52"
+            rx="4"
+            fill="rgba(204,34,34,0.07)"
+            stroke="rgba(204,34,34,0.22)"
+            stroke-width="0.8"
+          />
+          <!-- outcome icon: stagnant bars -->
+          <rect
+            x="20"
+            y="342"
+            width="5"
+            height="12"
+            rx="1"
+            fill="#cc3333"
+            opacity="0.4"
+          />
+          <rect
+            x="27"
+            y="345"
+            width="5"
+            height="9"
+            rx="1"
+            fill="#cc3333"
+            opacity="0.4"
+          />
+          <rect
+            x="34"
+            y="348"
+            width="5"
+            height="6"
+            rx="1"
+            fill="#cc3333"
+            opacity="0.4"
+          />
+          <text
+            x="44"
+            y="336"
+            font-family="'DM Mono',monospace"
+            font-size="6"
+            letter-spacing="1"
+            fill="#cc3333"
+            opacity="0.9"
+          >
+            OUTCOME
+          </text>
+          <text
+            x="44"
+            y="347"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#888"
+          >
+            Stuck in the day-to-day.
+          </text>
+          <text
+            x="44"
+            y="359"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#888"
+          >
+            Growth is slow. Capacity capped.
+          </text>
+
+          <!-- ── CENTRE: AI AUTOMATION ── -->
+          <!-- Outer glow ring -->
+          <circle cx="380" cy="205" r="58" fill="url(#grad-ai)" opacity="0.8" />
+          <circle
+            cx="380"
+            cy="205"
+            r="56"
+            stroke="url(#grad-border)"
+            stroke-width="0.8"
+            fill="none"
+            opacity="0.4"
+          />
+          <!-- Inner circle -->
+          <circle
+            cx="380"
+            cy="205"
+            r="44"
+            fill="#0f0f0f"
+            stroke="#1a1a1a"
+            stroke-width="1"
+          />
+
+          <!-- AI brain icon (simplified neural net) -->
+          <!-- Central node -->
+          <circle
+            cx="380"
+            cy="205"
+            r="6"
+            fill="#f62681"
+            opacity="0.9"
+            filter="url(#glow2)"
+          />
+          <!-- Satellite nodes -->
+          <circle
+            cx="380"
+            cy="181"
+            r="3.5"
+            stroke="#03caf4"
+            stroke-width="1"
+            fill="#0a0a0a"
+          />
+          <circle
+            cx="400"
+            cy="198"
+            r="3.5"
+            stroke="#03caf4"
+            stroke-width="1"
+            fill="#0a0a0a"
+          />
+          <circle
+            cx="395"
+            cy="222"
+            r="3.5"
+            stroke="#f62681"
+            stroke-width="1"
+            fill="#0a0a0a"
+          />
+          <circle
+            cx="365"
+            cy="222"
+            r="3.5"
+            stroke="#f62681"
+            stroke-width="1"
+            fill="#0a0a0a"
+          />
+          <circle
+            cx="360"
+            cy="198"
+            r="3.5"
+            stroke="#03caf4"
+            stroke-width="1"
+            fill="#0a0a0a"
+          />
+          <!-- Connections -->
           <line
-            x1="254"
-            y1="10"
-            x2="254"
-            y2="360"
-            stroke="#222"
+            x1="380"
+            y1="199"
+            x2="380"
+            y2="184"
+            stroke="#03caf4"
+            stroke-width="0.8"
+            opacity="0.6"
+          />
+          <line
+            x1="385"
+            y1="202"
+            x2="397"
+            y2="200"
+            stroke="#03caf4"
+            stroke-width="0.8"
+            opacity="0.6"
+          />
+          <line
+            x1="383"
+            y1="210"
+            x2="393"
+            y2="219"
+            stroke="#f62681"
+            stroke-width="0.8"
+            opacity="0.6"
+          />
+          <line
+            x1="377"
+            y1="210"
+            x2="367"
+            y2="219"
+            stroke="#f62681"
+            stroke-width="0.8"
+            opacity="0.6"
+          />
+          <line
+            x1="375"
+            y1="202"
+            x2="363"
+            y2="200"
+            stroke="#03caf4"
+            stroke-width="0.8"
+            opacity="0.6"
+          />
+
+          <!-- AI label -->
+          <text
+            x="380"
+            y="272"
+            text-anchor="middle"
+            font-family="'Montserrat',sans-serif"
+            font-size="9"
+            font-weight="700"
+            fill="#f0f0f0"
+          >
+            AI AUTOMATION
+          </text>
+          <text
+            x="380"
+            y="284"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#555"
+          >
+            Handles repetitive,
+          </text>
+          <text
+            x="380"
+            y="293"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#555"
+          >
+            rule-based tasks 24/7
+          </text>
+
+          <!-- Benefits pills -->
+          <!-- Saves Time -->
+          <rect
+            x="308"
+            y="308"
+            width="144"
+            height="18"
+            rx="9"
+            fill="rgba(3,202,244,0.07)"
+            stroke="rgba(3,202,244,0.2)"
             stroke-width="0.7"
-            stroke-dasharray="4 6"
-            opacity="0.3"
+          />
+          <circle
+            cx="322"
+            cy="317"
+            r="4"
+            fill="none"
+            stroke="#03caf4"
+            stroke-width="1"
+          />
+          <line
+            x1="322"
+            y1="314"
+            x2="322"
+            y2="317"
+            stroke="#03caf4"
+            stroke-width="0.8"
+          />
+          <line
+            x1="322"
+            y1="317"
+            x2="325"
+            y2="319"
+            stroke="#03caf4"
+            stroke-width="0.8"
+          />
+          <text
+            x="332"
+            y="321"
+            font-family="'DM Mono',monospace"
+            font-size="7"
+            fill="#03caf4"
+          >
+            Saves Time
+          </text>
+
+          <!-- Improves Accuracy -->
+          <rect
+            x="308"
+            y="332"
+            width="144"
+            height="18"
+            rx="9"
+            fill="rgba(246,38,129,0.07)"
+            stroke="rgba(246,38,129,0.2)"
+            stroke-width="0.7"
+          />
+          <circle
+            cx="322"
+            cy="341"
+            r="4"
+            fill="none"
+            stroke="#f62681"
+            stroke-width="1"
+          />
+          <path
+            d="M319.5 341.2 l1.8 1.8 3.2-3.2"
+            stroke="#f62681"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+          />
+          <text
+            x="332"
+            y="345"
+            font-family="'DM Mono',monospace"
+            font-size="7"
+            fill="#f62681"
+          >
+            Improves Accuracy
+          </text>
+
+          <!-- Scales Effortlessly: graph line flat then rising -->
+          <rect
+            x="308"
+            y="356"
+            width="144"
+            height="18"
+            rx="9"
+            fill="rgba(3,202,244,0.07)"
+            stroke="rgba(3,202,244,0.2)"
+            stroke-width="0.7"
+          />
+          <polyline
+            points="313,368 317,368 322,362 328,357"
+            stroke="#03caf4"
+            stroke-width="1.1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+          />
+          <circle cx="328" cy="357" r="1.3" fill="#03caf4" />
+          <text
+            x="335"
+            y="369"
+            font-family="'DM Mono',monospace"
+            font-size="7"
+            fill="#03caf4"
+          >
+            Scales Effortlessly
+          </text>
+
+          <!-- Arrows: before → AI -->
+          <path
+            d="M242 205 L320 205"
+            stroke="url(#grad-border)"
+            stroke-width="1"
+            opacity="0.5"
+            marker-end="url(#arr-pink)"
           />
 
-          <!-- ══════════════════════════════════════════════════ -->
-          <!-- BEFORE — left side: chaos, no connections         -->
-          <!-- ══════════════════════════════════════════════════ -->
+          <!-- Arrows: AI → after -->
+          <path
+            d="M440 205 L518 205"
+            stroke="url(#grad-border)"
+            stroke-width="1"
+            opacity="0.5"
+            marker-end="url(#arr-cyan)"
+          />
 
-          <!-- Node: Inbox (40 unread) -->
-          <g transform="translate(14, 32)" filter="url(#shadow)">
-            <rect
-              width="196"
-              height="52"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#111"
-              stroke-width="0.8"
-            />
-            <!-- envelope icon -->
-            <rect
-              x="12"
-              y="16"
-              width="20"
-              height="14"
-              rx="2"
-              stroke="#222"
-              stroke-width="1.2"
-              fill="none"
-            />
-            <path
-              d="M12 16 l10 8 10-8"
-              stroke="#222"
-              stroke-width="1.2"
-              fill="none"
-            />
-            <!-- badge 40 -->
-            <circle cx="34" cy="14" r="7" fill="#cc2222" />
-            <text
-              x="34"
-              y="18"
-              text-anchor="middle"
-              font-family="'DM Mono', monospace"
-              font-size="8"
-              font-weight="bold"
-              fill="#fff"
-            >
-              40
-            </text>
-            <text
-              x="42"
-              y="26"
-              font-family="'Montserrat', sans-serif"
-              font-size="10"
-              font-weight="500"
-              fill="var(--text)"
-            >
-              Inbox
-            </text>
-            <text
-              x="42"
-              y="39"
-              font-family="'DM Mono', monospace"
-              font-size="8"
-              fill="#888"
-            >
-              40 unread · no priority
-            </text>
-          </g>
-
-          <!-- Node: Social media time sink -->
-          <g transform="translate(14, 102)" filter="url(#shadow)">
-            <rect
-              width="196"
-              height="52"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#111"
-              stroke-width="0.8"
-            />
-            <!-- clock icon -->
-            <circle
-              cx="22"
-              cy="28"
-              r="10"
-              stroke="#222"
-              stroke-width="1.2"
-              fill="none"
-            />
-            <path
-              d="M22 21 L22 28 L27 31"
-              stroke="#e08800"
-              stroke-width="1.4"
-              stroke-linecap="round"
-            />
-            <text
-              x="40"
-              y="25"
-              font-family="'Montserrat', sans-serif"
-              font-size="10"
-              font-weight="500"
-              fill="var(--text)"
-            >
-              Social Media
-            </text>
-            <text
-              x="40"
-              y="38"
-              font-family="'DM Mono', monospace"
-              font-size="8"
-              fill="#e08800"
-            >
-              3 hrs / day · manual posts
-            </text>
-          </g>
-
-          <!-- Node: Reporting -->
-          <g transform="translate(14, 172)" filter="url(#shadow)">
-            <rect
-              width="196"
-              height="52"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#111"
-              stroke-width="0.8"
-            />
-            <!-- bar chart icon -->
-            <rect
-              x="11"
-              y="25"
-              width="5"
-              height="10"
-              rx="1"
-              fill="#888"
-              opacity="0.5"
-            />
-            <rect
-              x="18"
-              y="20"
-              width="5"
-              height="15"
-              rx="1"
-              fill="#888"
-              opacity="0.5"
-            />
-            <rect
-              x="25"
-              y="15"
-              width="5"
-              height="20"
-              rx="1"
-              fill="#888"
-              opacity="0.5"
-            />
-            <text
-              x="38"
-              y="25"
-              font-family="'Montserrat', sans-serif"
-              font-size="10"
-              font-weight="500"
-              fill="var(--text)"
-            >
-              Reporting
-            </text>
-            <text
-              x="38"
-              y="38"
-              font-family="'DM Mono', monospace"
-              font-size="8"
-              fill="#888"
-            >
-              rebuilt from scratch weekly
-            </text>
-          </g>
-
-          <!-- Node: Lead follow-up -->
-          <g transform="translate(14, 242)" filter="url(#shadow)">
-            <rect
-              width="196"
-              height="52"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#111"
-              stroke-width="0.8"
-            />
-            <!-- person icon -->
-            <circle
-              cx="22"
-              cy="20"
-              r="6"
-              stroke="#222"
-              stroke-width="1.2"
-              fill="none"
-            />
-            <path
-              d="M11 40 Q11 30 22 30 Q33 30 33 40"
-              stroke="#222"
-              stroke-width="1.2"
-              fill="none"
-            />
-            <text
-              x="40"
-              y="25"
-              font-family="'Montserrat', sans-serif"
-              font-size="10"
-              font-weight="500"
-              fill="var(--text)"
-            >
-              Lead Follow-up
-            </text>
-            <text
-              x="40"
-              y="38"
-              font-family="'DM Mono', monospace"
-              font-size="8"
-              fill="#888"
-            >
-              forgotten · inconsistent
-            </text>
-          </g>
-
-          <!-- Node: Ops tasks -->
-          <g transform="translate(14, 312)" filter="url(#shadow)">
-            <rect
-              width="196"
-              height="46"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#111"
-              stroke-width="0.8"
-            />
-            <!-- checklist icon -->
-            <rect
-              x="11"
-              y="11"
-              width="18"
-              height="22"
-              rx="2"
-              stroke="#222"
-              stroke-width="1.1"
-              fill="none"
-            />
-            <line
-              x1="15"
-              y1="17"
-              x2="25"
-              y2="17"
-              stroke="#222"
-              stroke-width="1"
-            />
-            <line
-              x1="15"
-              y1="22"
-              x2="25"
-              y2="22"
-              stroke="#222"
-              stroke-width="1"
-            />
-            <line
-              x1="15"
-              y1="27"
-              x2="21"
-              y2="27"
-              stroke="#222"
-              stroke-width="1"
-            />
-            <text
-              x="36"
-              y="22"
-              font-family="'Montserrat', sans-serif"
-              font-size="10"
-              font-weight="500"
-              fill="var(--text)"
-            >
-              Ops Tasks
-            </text>
-            <text
-              x="36"
-              y="35"
-              font-family="'DM Mono', monospace"
-              font-size="8"
-              fill="#888"
-            >
-              no system · bottlenecks
-            </text>
-          </g>
-
-          <!-- No connecting lines between before-nodes — intentional chaos -->
-          <!-- Badge after Ops Tasks (y=312) -->
-          <g transform="translate(14, 370)">
-            <rect
-              width="196"
-              height="15"
-              rx="3"
-              fill="rgba(204,51,51,0.07)"
-              stroke="rgba(204,51,51,0.3)"
-              stroke-width="0.7"
-            />
-            <text
-              x="98"
-              y="9"
-              text-anchor="middle"
-              font-family="'DM Mono', monospace"
-              font-size="6.5"
-              letter-spacing="0.8"
-              fill="#cc3333"
-              opacity="0.85"
-              style="text-transform: uppercase"
-            >
-              no system · no leverage
-            </text>
-          </g>
-
-          <!-- ══════════════════════════════════════════════════ -->
-          <!-- AFTER — right side: n8n-style pipeline            -->
-          <!-- ══════════════════════════════════════════════════ -->
-
-          <!-- TRIGGER NODE (top) — cyan -->
-          <g transform="translate(270, 32)" filter="url(#shadow)">
-            <rect
-              width="196"
-              height="52"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#03caf4"
-              stroke-width="1.2"
-            />
-            <!-- top accent line drawn after main rect, clipped to box shape -->
-            <rect
-              x="0"
-              y="0"
-              width="196"
-              height="3"
-              fill="url(#topbar)"
-              clip-path="url(#clip-196x52)"
-            />
-            <!-- lightning trigger icon -->
-            <path
-              d="M18 14 L13 28 L19 28 L14 42"
-              stroke="#03caf4"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              fill="none"
-            />
-            <text
-              x="32"
-              y="27"
-              font-family="'Montserrat', sans-serif"
-              font-size="10"
-              font-weight="600"
-              fill="var(--text)"
-            >
-              Trigger
-            </text>
-            <text
-              x="32"
-              y="40"
-              font-family="'DM Mono', monospace"
-              font-size="8"
-              fill="#03caf4"
-            >
-              new lead · form submit · schedule
-            </text>
-          </g>
-
-          <!-- Arrow: Trigger → Router (Trigger bottom centre → Router top centre) -->
-          <line
-            x1="368"
-            y1="84"
-            x2="368"
-            y2="106"
-            stroke="#f62681"
-            stroke-width="1.2"
+          <!-- ── AFTER: Donut chart (80% growth) ── -->
+          <!-- Donut ring: 20% grey (remaining tasks) -->
+          <circle
+            cx="639"
+            cy="100"
+            r="42"
+            stroke="#1a2a1a"
+            stroke-width="14"
+            fill="none"
+          />
+          <!-- 80% cyan arc: 80% of 264 ≈ 211.2 -->
+          <circle
+            cx="639"
+            cy="100"
+            r="42"
+            stroke="#03caf4"
+            stroke-width="14"
+            fill="none"
+            stroke-dasharray="211.2 52.8"
+            stroke-dashoffset="66"
+            stroke-linecap="butt"
             opacity="0.85"
-            marker-end="url(#a-pink)"
           />
+          <text
+            x="639"
+            y="95"
+            text-anchor="middle"
+            font-family="'Montserrat',sans-serif"
+            font-size="18"
+            font-weight="700"
+            fill="#03caf4"
+          >
+            80%
+          </text>
+          <text
+            x="639"
+            y="110"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="7"
+            fill="#666"
+          >
+            Growth Work
+          </text>
 
-          <!-- ROUTER NODE (centre-top) — pink core -->
-          <g transform="translate(270, 108)" filter="url(#glow)">
-            <rect
-              width="196"
-              height="62"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#f62681"
-              stroke-width="1.5"
-            />
-            <rect
-              x="0"
-              y="0"
-              width="196"
-              height="3"
-              fill="url(#topbar)"
-              clip-path="url(#clip-196x62)"
-            />
-            <!-- route / branch icon -->
-            <circle
-              cx="20"
-              cy="31"
-              r="7"
-              stroke="#f62681"
-              stroke-width="1.4"
-              fill="none"
-            />
-            <line
-              x1="27"
-              y1="27"
-              x2="34"
-              y2="21"
-              stroke="#f62681"
-              stroke-width="1.2"
-            />
-            <line
-              x1="27"
-              y1="35"
-              x2="34"
-              y2="41"
-              stroke="#f62681"
-              stroke-width="1.2"
-            />
-            <circle
-              cx="37"
-              cy="20"
-              r="3"
-              stroke="#f62681"
-              stroke-width="1.1"
-              fill="none"
-            />
-            <circle
-              cx="37"
-              cy="42"
-              r="3"
-              stroke="#f62681"
-              stroke-width="1.1"
-              fill="none"
-            />
-            <text
-              x="48"
-              y="27"
-              font-family="'Montserrat', sans-serif"
-              font-size="10"
-              font-weight="700"
-              fill="var(--text)"
-            >
-              Automated Router
-            </text>
-            <text
-              x="48"
-              y="40"
-              font-family="'DM Mono', monospace"
-              font-size="7"
-              letter-spacing="-0.1"
-              fill="#f62681"
-            >
-              classifies · prioritises · routes
-            </text>
-            <text
-              x="48"
-              y="52"
-              font-family="'DM Mono', monospace"
-              font-size="7.5"
-              fill="#888"
-            >
-              no human input needed
-            </text>
-          </g>
+          <!-- Subheader after -->
+          <text
+            x="639"
+            y="157"
+            text-anchor="middle"
+            font-family="'Montserrat',sans-serif"
+            font-size="8.5"
+            font-weight="600"
+            fill="#f0f0f0"
+          >
+            FOCUSED ON HIGH IMPACT WORK
+          </text>
+          <text
+            x="639"
+            y="170"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="7"
+            fill="#555"
+          >
+            More capacity. More growth.
+          </text>
 
-          <!-- Arrow: Router → Email Handler -->
-          <line
-            x1="340"
-            y1="170"
-            x2="300"
-            y2="196"
-            stroke="#f62681"
-            stroke-width="1.2"
-            opacity="0.7"
-            marker-end="url(#a-pink)"
+          <!-- TIME SPENT label -->
+          <text
+            x="530"
+            y="190"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            letter-spacing="1.2"
+            fill="#555"
+          >
+            TIME SPENT ON...
+          </text>
+
+          <!-- After task bars -->
+          <!-- Strategy & Vision 30% -->
+          <text
+            x="530"
+            y="207"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Strategy &amp; Vision
+          </text>
+          <rect x="530" y="210" width="214" height="5" rx="2" fill="#1a2a1a" />
+          <rect
+            x="530"
+            y="210"
+            width="64"
+            height="5"
+            rx="2"
+            fill="#03caf4"
+            opacity="0.75"
           />
-          <!-- Arrow: Router → Social Publisher -->
-          <line
-            x1="368"
-            y1="170"
-            x2="368"
-            y2="196"
-            stroke="#f62681"
-            stroke-width="1.2"
-            opacity="0.7"
-            marker-end="url(#a-pink)"
+          <text
+            x="748"
+            y="216"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#03caf4"
+          >
+            30%
+          </text>
+
+          <!-- Product & Innovation 25% -->
+          <text
+            x="530"
+            y="228"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Product &amp; Innovation
+          </text>
+          <rect x="530" y="231" width="214" height="5" rx="2" fill="#1a2a1a" />
+          <rect
+            x="530"
+            y="231"
+            width="53"
+            height="5"
+            rx="2"
+            fill="#03caf4"
+            opacity="0.75"
           />
-          <!-- Arrow: Router → Report Builder -->
-          <line
-            x1="396"
-            y1="170"
-            x2="436"
-            y2="196"
-            stroke="#f62681"
-            stroke-width="1.2"
-            opacity="0.7"
-            marker-end="url(#a-pink)"
+          <text
+            x="748"
+            y="237"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#03caf4"
+          >
+            25%
+          </text>
+
+          <!-- Growth & Marketing 20% -->
+          <text
+            x="530"
+            y="249"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Growth &amp; Marketing
+          </text>
+          <rect x="530" y="252" width="214" height="5" rx="2" fill="#1a2a1a" />
+          <rect
+            x="530"
+            y="252"
+            width="43"
+            height="5"
+            rx="2"
+            fill="#03caf4"
+            opacity="0.75"
           />
+          <text
+            x="748"
+            y="258"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#03caf4"
+          >
+            20%
+          </text>
 
-          <!-- OUTPUT NODE A: Email / Lead response -->
-          <g transform="translate(262, 196)" filter="url(#shadow)">
-            <rect
-              width="70"
-              height="52"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#f62681"
-              stroke-width="0.9"
-              opacity="0.85"
-            />
-            <!-- envelope -->
-            <rect
-              x="15"
-              y="13"
-              width="40"
-              height="26"
-              rx="3"
-              stroke="#"
-              stroke-width="1"
-              fill="none"
-              opacity="0.7"
-            />
-            <path
-              d="M15 13 l20 13 20-13"
-              stroke="#f62681"
-              stroke-width="1"
-              fill="none"
-              opacity="0.7"
-            />
-            <text
-              x="35"
-              y="48"
-              text-anchor="middle"
-              font-family="'DM Mono', monospace"
-              font-size="7.5"
-              fill="#f62681"
-            >
-              Reply
-            </text>
-          </g>
+          <!-- Partnerships & Sales 15% -->
+          <text
+            x="530"
+            y="270"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Partnerships &amp; Sales
+          </text>
+          <rect x="530" y="273" width="214" height="5" rx="2" fill="#1a2a1a" />
+          <rect
+            x="530"
+            y="273"
+            width="32"
+            height="5"
+            rx="2"
+            fill="#03caf4"
+            opacity="0.75"
+          />
+          <text
+            x="748"
+            y="279"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#03caf4"
+          >
+            15%
+          </text>
 
-          <!-- OUTPUT NODE B: Social scheduler -->
-          <g transform="translate(333, 196)" filter="url(#shadow)">
-            <rect
-              width="70"
-              height="52"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#f62681"
-              stroke-width="0.9"
-              opacity="0.85"
-            />
-            <!-- share icon -->
-            <circle
-              cx="24"
-              cy="26"
-              r="5"
-              stroke="#f62681"
-              stroke-width="1"
-              fill="none"
-              opacity="0.7"
-            />
-            <circle
-              cx="46"
-              cy="14"
-              r="5"
-              stroke="#f62681"
-              stroke-width="1"
-              fill="none"
-              opacity="0.7"
-            />
-            <circle
-              cx="46"
-              cy="38"
-              r="5"
-              stroke="#f62681"
-              stroke-width="1"
-              fill="none"
-              opacity="0.7"
-            />
-            <line
-              x1="29"
-              y1="23"
-              x2="41"
-              y2="17"
-              stroke="#f62681"
-              stroke-width="1"
-              opacity="0.7"
-            />
-            <line
-              x1="29"
-              y1="29"
-              x2="41"
-              y2="35"
-              stroke="#f62681"
-              stroke-width="1"
-              opacity="0.7"
-            />
-            <text
-              x="35"
-              y="48"
-              text-anchor="middle"
-              font-family="'DM Mono', monospace"
-              font-size="7.5"
-              fill="#f62681"
-            >
-              Post
-            </text>
-          </g>
+          <!-- Team & Culture 10% -->
+          <text
+            x="530"
+            y="291"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#aaa"
+          >
+            Team &amp; Culture
+          </text>
+          <rect x="530" y="294" width="214" height="5" rx="2" fill="#1a2a1a" />
+          <rect
+            x="530"
+            y="294"
+            width="21"
+            height="5"
+            rx="2"
+            fill="#03caf4"
+            opacity="0.75"
+          />
+          <text
+            x="748"
+            y="300"
+            text-anchor="end"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#03caf4"
+          >
+            10%
+          </text>
 
-          <!-- OUTPUT NODE C: Report -->
-          <g transform="translate(404, 196)" filter="url(#shadow)">
-            <rect
-              width="70"
-              height="52"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#f62681"
-              stroke-width="0.9"
-              opacity="0.85"
-            />
-            <!-- bar chart -->
-            <rect
-              x="13"
-              y="30"
-              width="8"
-              height="12"
-              rx="1"
-              fill="#f62681"
-              opacity="0.45"
-            />
-            <rect
-              x="24"
-              y="22"
-              width="8"
-              height="20"
-              rx="1"
-              fill="#f62681"
-              opacity="0.45"
-            />
-            <rect
-              x="35"
-              y="16"
-              width="8"
-              height="26"
-              rx="1"
-              fill="#f62681"
-              opacity="0.55"
-            />
-            <rect
-              x="46"
-              y="26"
-              width="8"
-              height="16"
-              rx="1"
-              fill="#f62681"
-              opacity="0.45"
-            />
-            <text
-              x="35"
-              y="48"
-              text-anchor="middle"
-              font-family="'DM Mono', monospace"
-              font-size="7.5"
-              fill="#f62681"
-            >
-              Report
-            </text>
-          </g>
-
-          <!-- Arrows from output nodes down to "Result" -->
-          <line
-            x1="297"
-            y1="248"
-            x2="340"
-            y2="274"
+          <!-- After outcome box -->
+          <rect
+            x="526"
+            y="320"
+            width="222"
+            height="52"
+            rx="4"
+            fill="rgba(3,202,244,0.06)"
+            stroke="rgba(3,202,244,0.22)"
+            stroke-width="0.8"
+          />
+          <!-- outcome icon: rising arrow -->
+          <path
+            d="M536 362 L536 338 M529 345 L536 338 L543 345"
             stroke="#03caf4"
-            stroke-width="1"
-            opacity="0.5"
-            marker-end="url(#a-cyan)"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+            opacity="0.8"
           />
-          <line
-            x1="368"
-            y1="248"
-            x2="368"
-            y2="274"
-            stroke="#03caf4"
-            stroke-width="1"
-            opacity="0.5"
-            marker-end="url(#a-cyan)"
-          />
-          <line
-            x1="439"
-            y1="248"
-            x2="396"
-            y2="274"
-            stroke="#03caf4"
-            stroke-width="1"
-            opacity="0.5"
-            marker-end="url(#a-cyan)"
-          />
+          <text
+            x="550"
+            y="336"
+            font-family="'DM Mono',monospace"
+            font-size="6"
+            letter-spacing="1"
+            fill="#03caf4"
+            opacity="0.9"
+          >
+            OUTCOME
+          </text>
+          <text
+            x="550"
+            y="347"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#888"
+          >
+            Focused on what drives growth.
+          </text>
+          <text
+            x="550"
+            y="359"
+            font-family="'Montserrat',sans-serif"
+            font-size="7.5"
+            fill="#888"
+          >
+            Business scales. Impact multiplies.
+          </text>
 
-          <!-- RESULT NODE: You focus on growth -->
-          <g transform="translate(270, 274)" filter="url(#shadow)">
-            <rect
-              width="196"
-              height="52"
-              rx="6"
-              fill="var(--bg)"
-              stroke="#03caf4"
-              stroke-width="1.2"
-            />
-            <rect
-              x="0"
-              y="0"
-              width="196"
-              height="3"
-              fill="url(#topbar)"
-              clip-path="url(#clip-196x52)"
-            />
-            <!-- upward arrow icon -->
-            <path
-              d="M20 38 L20 20 M13 27 L20 20 L27 27"
-              stroke="#03caf4"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              fill="none"
-            />
-            <text
-              x="38"
-              y="26"
-              font-family="'Montserrat', sans-serif"
-              font-size="10"
-              font-weight="600"
-              fill="var(--text)"
-            >
-              You focus on growth
-            </text>
-            <text
-              x="38"
-              y="39"
-              font-family="'DM Mono', monospace"
-              font-size="8"
-              fill="#03caf4"
-            >
-              system runs · you scale
-            </text>
-          </g>
+          <!-- ── BOTTOM TAGLINE ── -->
+          <text
+            x="380"
+            y="458"
+            text-anchor="middle"
+            font-family="'Montserrat',sans-serif"
+            font-size="8"
+            font-weight="700"
+            letter-spacing="2"
+            fill="#f0f0f0"
+            opacity="0.5"
+          >
+            AUTOMATE THE BUSYWORK. AMPLIFY WHAT MATTERS.
+          </text>
 
-          <!-- SAVED TIME BADGE -->
-          <g transform="translate(270, 336)">
-            <rect
-              width="196"
-              height="28"
-              rx="4"
-              fill="rgba(246,38,129,0.07)"
-              stroke="rgba(246,38,129,0.3)"
-              stroke-width="0.8"
-            />
-            <text
-              x="98"
-              y="18"
-              text-anchor="middle"
-              font-family="'DM Mono', monospace"
-              font-size="7.5"
-              letter-spacing="0.8"
-              fill="#f62681"
-              style="text-transform: uppercase"
-            >
-              3 hrs/day → back in your hands
-            </text>
-          </g>
+          <!-- Bottom benefit pills row -->
+          <!-- More Time -->
+          <rect
+            x="50"
+            y="472"
+            width="130"
+            height="18"
+            rx="9"
+            fill="rgba(255,255,255,0.03)"
+            stroke="rgba(255,255,255,0.08)"
+            stroke-width="0.7"
+          />
+          <text
+            x="115"
+            y="485"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#555"
+          >
+            MORE TIME
+          </text>
+
+          <!-- More Growth -->
+          <rect
+            x="200"
+            y="472"
+            width="130"
+            height="18"
+            rx="9"
+            fill="rgba(255,255,255,0.03)"
+            stroke="rgba(255,255,255,0.08)"
+            stroke-width="0.7"
+          />
+          <text
+            x="265"
+            y="485"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#555"
+          >
+            MORE GROWTH
+          </text>
+
+          <!-- More Scale -->
+          <rect
+            x="430"
+            y="472"
+            width="130"
+            height="18"
+            rx="9"
+            fill="rgba(255,255,255,0.03)"
+            stroke="rgba(255,255,255,0.08)"
+            stroke-width="0.7"
+          />
+          <text
+            x="495"
+            y="485"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#555"
+          >
+            MORE SCALE
+          </text>
+
+          <!-- More Freedom -->
+          <rect
+            x="580"
+            y="472"
+            width="130"
+            height="18"
+            rx="9"
+            fill="rgba(255,255,255,0.03)"
+            stroke="rgba(255,255,255,0.08)"
+            stroke-width="0.7"
+          />
+          <text
+            x="645"
+            y="485"
+            text-anchor="middle"
+            font-family="'DM Mono',monospace"
+            font-size="6.5"
+            fill="#555"
+          >
+            MORE FREEDOM
+          </text>
         </svg>
       </div>
+      <!-- /ba-desktop -->
     </section>
 
     <!-- CASE STUDIES -->
@@ -3632,6 +4577,77 @@
       window.addEventListener("load", drawWorkflowLines);
       window.addEventListener("resize", drawWorkflowLines);
       setTimeout(drawWorkflowLines, 2700);
+      /* ── Before/After mobile scroll dots + bar animation ── */
+      (function () {
+        const track = document.getElementById("baTrack");
+        const dots = document.querySelectorAll(".ba-scroll-dot");
+        if (!track) return;
+
+        // Animate bar fills when a card scrolls into view
+        function animateBars(card) {
+          card.querySelectorAll(".ba-bar-fill").forEach((bar) => {
+            const w = bar.style.width; // e.g. "25%"
+            bar.style.setProperty("--target-w", w);
+            bar.style.width = "0";
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => {
+                bar.style.width = w;
+              }),
+            );
+          });
+        }
+
+        // Set active dot
+        function setDot(idx) {
+          dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+        }
+
+        // Dot click → scroll to card
+        dots.forEach((dot, i) => {
+          dot.addEventListener("click", () => {
+            const cards = track.querySelectorAll(".ba-card");
+            if (cards[i])
+              cards[i].scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center",
+              });
+          });
+        });
+
+        // Track scroll position → update dots + trigger bar animations
+        const animated = new Set();
+        track.addEventListener(
+          "scroll",
+          () => {
+            const cards = track.querySelectorAll(".ba-card");
+            let closest = 0,
+              minDist = Infinity;
+            cards.forEach((card, i) => {
+              const center =
+                card.offsetLeft + card.offsetWidth / 2 - track.scrollLeft;
+              const dist = Math.abs(center - track.offsetWidth / 2);
+              if (dist < minDist) {
+                minDist = dist;
+                closest = i;
+              }
+            });
+            setDot(closest);
+
+            // Animate bars once per card when it becomes active
+            const activeCard = cards[closest];
+            if (activeCard && !animated.has(closest)) {
+              animated.add(closest);
+              animateBars(activeCard);
+            }
+          },
+          { passive: true },
+        );
+
+        // Animate first card's bars on load
+        const firstCard = track.querySelector(".ba-card");
+        if (firstCard) setTimeout(() => animateBars(firstCard), 400);
+      })();
     </script>
   </body>
 </html>
