@@ -1972,6 +1972,70 @@
         border: 0.5px solid rgba(246, 38, 129, 0.22);
         color: #f62681;
       }
+
+      /* ─── CONTACT CTA SECTION ─── */
+      .contact-cta-section {
+        padding: 9rem 5rem;
+        border-top: 0.5px solid var(--line);
+        background: var(--bg);
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      .contact-cta-inner {
+        max-width: 640px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+      .contact-cta-num {
+        font-family: "DM Mono", monospace;
+        font-size: 0.6rem;
+        color: var(--accent2);
+        letter-spacing: 0.2em;
+        margin-bottom: 1.5rem;
+      }
+      .contact-cta-headline {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
+      .contact-cta-sub {
+        font-size: 0.92rem;
+        color: var(--text2);
+        line-height: 1.9;
+        max-width: 520px;
+        margin-bottom: 3rem;
+      }
+      .contact-cta-btns {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .btn-ghost--lg {
+        font-size: 0.72rem;
+        padding: 0.9rem 2.2rem;
+        border-radius: 7px;
+      }
+      @media (max-width: 600px) {
+        .contact-cta-section {
+          padding: 6rem 2rem;
+        }
+        .contact-cta-btns {
+          flex-direction: column;
+          width: 100%;
+        }
+        .contact-cta-btns a {
+          justify-content: center;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2024,7 +2088,7 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         </button>
-        <a href="#contact" class="btn-start btn-start--sm"
+        <a href="contact.html" class="btn-start btn-start--sm"
           >Let's talk<svg
             width="11"
             height="11"
@@ -2092,7 +2156,7 @@
           bottlenecks.
         </p>
         <div class="hero-cta" style="justify-content: center">
-          <a href="#contact" class="btn-start btn-start--lg"
+          <a href="contact.html" class="btn-start btn-start--lg"
             >Let's talk<svg
               width="14"
               height="14"
@@ -4035,7 +4099,11 @@
         class="hero-cta awaits-cta reveal"
         style="justify-content: center; margin-top: 3.5rem"
       >
-        <a href="#contact" class="btn-start btn-start--lg"
+        <a
+          href="https://cal.com/YOUR_CAL_USERNAME/discovery-call"
+          target="_blank"
+          rel="noopener"
+          class="btn-start btn-start--lg"
           >Book a Call<svg
             width="14"
             height="14"
@@ -4221,212 +4289,46 @@
       </div>
     </div>
 
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-      <div class="section-header reveal">
-        <span class="section-num">06</span>
-        <h2 class="section-title">Ready to scale with AI?</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="contact-inner">
-        <div class="reveal d1">
-          <p
-            style="
-              font-size: 0.92rem;
-              color: var(--text2);
-              line-height: 1.9;
-              margin-bottom: 2.5rem;
-              max-width: 500px;
-            "
-          >
-            Book a free 30-minute growth mapping call. We'll audit your
-            processes, find the bottlenecks, and show you exactly where AI moves
-            the needle.
-          </p>
-          <form class="contact-form" onsubmit="handleSubmit(event)">
-            <div class="field-group">
-              <div class="field">
-                <label>Name</label
-                ><input type="text" placeholder="Your name" required />
-              </div>
-              <div class="field">
-                <label>Email</label
-                ><input type="email" placeholder="your@email.com" required />
-              </div>
-            </div>
-            <div class="field">
-              <label>Company / Organisation</label
-              ><input type="text" placeholder="Company name (optional)" />
-            </div>
-            <div class="field">
-              <label>What are you hoping to improve now?</label>
-              <div class="checkbox-group">
-                <label class="checkbox-item" onclick="toggleCheck(this)"
-                  ><input type="checkbox" />
-                  <div class="checkbox-box">
-                    <svg
-                      class="checkbox-check"
-                      width="9"
-                      height="9"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M2 6l3 3 5-5" />
-                    </svg>
-                  </div>
-                  <span class="checkbox-label"
-                    >Growth & Lead Acquisition</span
-                  ></label
-                >
-                <label class="checkbox-item" onclick="toggleCheck(this)"
-                  ><input type="checkbox" />
-                  <div class="checkbox-box">
-                    <svg
-                      class="checkbox-check"
-                      width="9"
-                      height="9"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M2 6l3 3 5-5" />
-                    </svg>
-                  </div>
-                  <span class="checkbox-label"
-                    >Support & Customer Communication</span
-                  ></label
-                >
-                <label class="checkbox-item" onclick="toggleCheck(this)"
-                  ><input type="checkbox" />
-                  <div class="checkbox-box">
-                    <svg
-                      class="checkbox-check"
-                      width="9"
-                      height="9"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M2 6l3 3 5-5" />
-                    </svg>
-                  </div>
-                  <span class="checkbox-label"
-                    >Internal Processes & Operations</span
-                  ></label
-                >
-                <label class="checkbox-item" onclick="toggleCheck(this)"
-                  ><input type="checkbox" />
-                  <div class="checkbox-box">
-                    <svg
-                      class="checkbox-check"
-                      width="9"
-                      height="9"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M2 6l3 3 5-5" />
-                    </svg>
-                  </div>
-                  <span class="checkbox-label"
-                    >Data, Reporting & Insights</span
-                  ></label
-                >
-                <label class="checkbox-item" onclick="toggleCheck(this)"
-                  ><input type="checkbox" />
-                  <div class="checkbox-box">
-                    <svg
-                      class="checkbox-check"
-                      width="9"
-                      height="9"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M2 6l3 3 5-5" />
-                    </svg>
-                  </div>
-                  <span class="checkbox-label"
-                    >Content, Copy & Marketing</span
-                  ></label
-                >
-                <label class="checkbox-item" onclick="toggleCheck(this)"
-                  ><input type="checkbox" />
-                  <div class="checkbox-box">
-                    <svg
-                      class="checkbox-check"
-                      width="9"
-                      height="9"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M2 6l3 3 5-5" />
-                    </svg>
-                  </div>
-                  <span class="checkbox-label">Not sure yet</span></label
-                >
-              </div>
-            </div>
-            <div class="field">
-              <label>Message</label
-              ><textarea
-                rows="5"
-                placeholder="Tell me a bit about your business and what you're looking to solve..."
-              ></textarea>
-            </div>
-            <div><button type="submit" class="btn-primary">Submit</button></div>
-            <div
-              id="form-success"
-              style="
-                display: none;
-                font-family: &quot;DM Mono&quot;, monospace;
-                font-size: 0.62rem;
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-                color: var(--accent);
-                padding: 1rem 0;
-              "
+    <!-- CONTACT CTA -->
+    <section class="contact-cta-section" id="contact">
+      <div class="contact-cta-inner reveal">
+        <div class="contact-cta-num">06</div>
+        <h2 class="contact-cta-headline">Ready to scale with AI?</h2>
+        <p class="contact-cta-sub">
+          Book a free 30-minute growth mapping call. We'll audit your processes,
+          find the bottlenecks, and show you exactly where AI moves the needle.
+        </p>
+        <div class="contact-cta-btns">
+          <a
+            href="https://cal.com/YOUR_CAL_USERNAME/discovery-call"
+            target="_blank"
+            rel="noopener"
+            class="btn-start btn-start--lg"
+            >Book a Call<svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
-              Message received. I'll be in touch shortly.
-            </div>
-          </form>
-        </div>
-        <div class="contact-aside reveal d2">
-          <div class="contact-info-block">
-            <div class="contact-info-label">Email</div>
-            <div class="contact-info-value">
-              <a href="mailto:hello@raemcdowell.co">hello@raemcdowell.co</a>
-            </div>
-          </div>
-          <div class="contact-info-block">
-            <div class="contact-info-label">Response time</div>
-            <div
-              class="contact-info-value"
-              style="font-size: 0.85rem; color: var(--text3)"
+              <path d="M2 7h10M8 3l4 4-4 4" /></svg
+          ></a>
+          <a href="contact.html" class="btn-ghost btn-ghost--lg"
+            >Let's Talk<svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
-              Typically within 1–2 business days
-            </div>
-          </div>
+              <path d="M2 7h10M8 3l4 4-4 4" /></svg
+          ></a>
         </div>
       </div>
     </section>
@@ -4459,6 +4361,13 @@
           "data-theme",
           isDark ? "dark" : "light",
         );
+        // Sync Cal.com embed theme
+        const calFrame = document.getElementById("cal-embed");
+        if (calFrame) {
+          const base = calFrame.src.split("?")[0];
+          calFrame.src =
+            base + "?embed=true&theme=" + (isDark ? "dark" : "light");
+        }
       }
       function toggleTheme() {
         isDark = !isDark;
@@ -4532,20 +4441,62 @@
       });
 
       /* ── Form ── */
-      function toggleCheck(label) {
+      function toggleCheck(label, event) {
+        event.preventDefault(); // prevent double-fire from label→input click loop
         label.classList.toggle("checked");
         label.querySelector("input[type=checkbox]").checked =
           label.classList.contains("checked");
       }
-      function handleSubmit(e) {
+      async function handleSubmit(e) {
         e.preventDefault();
-        const btn = e.target.querySelector('button[type="submit"]');
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
         btn.textContent = "Sending…";
         btn.disabled = true;
-        setTimeout(() => {
-          btn.style.display = "none";
-          document.getElementById("form-success").style.display = "block";
-        }, 1000);
+
+        // Collect checked interests
+        const interests = [];
+        form
+          .querySelectorAll(".checkbox-item.checked .checkbox-label")
+          .forEach((el) => interests.push(el.textContent.trim()));
+
+        const data = {
+          access_key: "YOUR_WEB3FORMS_KEY", // ← replace with your Web3Forms key
+          name: form.querySelector('input[type="text"]').value,
+          email: form.querySelector('input[type="email"]').value,
+          company: form.querySelectorAll('input[type="text"]')[1]?.value || "",
+          interests: interests.join(", ") || "None selected",
+          message: form.querySelector("textarea").value,
+          subject: "New enquiry — Rae McDowell Consulting",
+        };
+
+        try {
+          const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+          const json = await res.json();
+          if (json.success) {
+            btn.style.display = "none";
+            document.getElementById("form-success").style.display = "block";
+          } else {
+            btn.textContent = "Submit";
+            btn.disabled = false;
+            alert(
+              "Something went wrong. Please try again or email hello@raemcdowell.co",
+            );
+          }
+        } catch (err) {
+          btn.textContent = "Submit";
+          btn.disabled = false;
+          alert(
+            "Network error. Please try again or email hello@raemcdowell.co",
+          );
+        }
       }
       function drawWorkflowLines() {
         const outer = document.getElementById("workflowOuter");
