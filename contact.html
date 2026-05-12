@@ -506,21 +506,33 @@
           you within 1–2 business days. No pitch, no pressure.
         </p>
 
-        <form
-          class="contact-form"
-          id="contactForm"
-          onsubmit="handleSubmit(event)"
-          novalidate
-        >
+        <form class="contact-form" id="form" novalidate>
+          <input
+            type="hidden"
+            name="access_key"
+            value="10336c80-9f21-400a-a8b9-ae59c72f6eb6"
+          />
+          <input
+            type="hidden"
+            name="subject"
+            value="New enquiry — Rae McDowell Consulting"
+          />
           <div class="field-group">
             <div class="field">
               <label for="f-name">Name</label>
-              <input id="f-name" type="text" placeholder="Your name" required />
+              <input
+                id="f-name"
+                name="name"
+                type="text"
+                placeholder="Your name"
+                required
+              />
             </div>
             <div class="field">
               <label for="f-email">Email</label>
               <input
                 id="f-email"
+                name="email"
                 type="email"
                 placeholder="your@email.com"
                 required
@@ -531,6 +543,7 @@
             <label for="f-company">Company / Organisation</label>
             <input
               id="f-company"
+              name="company"
               type="text"
               placeholder="Company name (optional)"
             />
@@ -539,7 +552,11 @@
             <label>What are you hoping to improve?</label>
             <div class="checkbox-group">
               <label class="checkbox-item" onclick="toggleCheck(this, event)">
-                <input type="checkbox" value="Growth & Lead Acquisition" />
+                <input
+                  type="checkbox"
+                  name="interests"
+                  value="Growth & Lead Acquisition"
+                />
                 <div class="checkbox-box">
                   <svg
                     class="checkbox-check"
@@ -560,6 +577,7 @@
               <label class="checkbox-item" onclick="toggleCheck(this, event)">
                 <input
                   type="checkbox"
+                  name="interests"
                   value="Support & Customer Communication"
                 />
                 <div class="checkbox-box">
@@ -584,6 +602,7 @@
               <label class="checkbox-item" onclick="toggleCheck(this, event)">
                 <input
                   type="checkbox"
+                  name="interests"
                   value="Internal Processes & Operations"
                 />
                 <div class="checkbox-box">
@@ -606,7 +625,11 @@
                 >
               </label>
               <label class="checkbox-item" onclick="toggleCheck(this, event)">
-                <input type="checkbox" value="Data, Reporting & Insights" />
+                <input
+                  type="checkbox"
+                  name="interests"
+                  value="Data, Reporting & Insights"
+                />
                 <div class="checkbox-box">
                   <svg
                     class="checkbox-check"
@@ -625,7 +648,11 @@
                 <span class="checkbox-label">Data, Reporting & Insights</span>
               </label>
               <label class="checkbox-item" onclick="toggleCheck(this, event)">
-                <input type="checkbox" value="Content, Copy & Marketing" />
+                <input
+                  type="checkbox"
+                  name="interests"
+                  value="Content, Copy & Marketing"
+                />
                 <div class="checkbox-box">
                   <svg
                     class="checkbox-check"
@@ -644,7 +671,7 @@
                 <span class="checkbox-label">Content, Copy & Marketing</span>
               </label>
               <label class="checkbox-item" onclick="toggleCheck(this, event)">
-                <input type="checkbox" value="Not sure yet" />
+                <input type="checkbox" name="interests" value="Not sure yet" />
                 <div class="checkbox-box">
                   <svg
                     class="checkbox-check"
@@ -668,13 +695,14 @@
             <label for="f-message">Message</label>
             <textarea
               id="f-message"
+              name="message"
               rows="5"
               placeholder="Tell me a bit about your business and what you're looking to solve..."
             ></textarea>
           </div>
           <div>
             <button type="submit" class="btn-primary" id="submitBtn">
-              Submit
+              Send message
               <svg
                 width="13"
                 height="13"
@@ -732,56 +760,47 @@
           label.classList.contains("checked");
       }
 
-      /* ── Form submit ── */
-      async function handleSubmit(e) {
+      /* ── Form submit (Web3Forms) ── */
+      const form = document.getElementById("form");
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const btn = document.getElementById("submitBtn");
-        const successEl = document.getElementById("form-success");
-        const errorEl = document.getElementById("form-error");
-
-        btn.textContent = "Sending…";
-        btn.disabled = true;
-        errorEl.style.display = "none";
-
-        const interests = [];
-        document
-          .querySelectorAll(".checkbox-item.checked input")
-          .forEach((el) => interests.push(el.value));
-
-        const data = {
-          access_key: "Y10336c80-9f21-400a-a8b9-ae59c72f6eb6", // ← replace with your key from web3forms.com
-          name: document.getElementById("f-name").value,
-          email: document.getElementById("f-email").value,
-          company: document.getElementById("f-company").value || "",
-          interests: interests.join(", ") || "None selected",
-          message: document.getElementById("f-message").value,
-          subject: "New enquiry — Rae McDowell Consulting",
-        };
-
+        const formData = new FormData(form);
+        const originalHTML = submitBtn.innerHTML;
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
         try {
-          const res = await fetch("https://api.web3forms.com/submit", {
+          const response = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(data),
+            body: formData,
           });
-          const json = await res.json();
-          if (json.success) {
-            document.getElementById("contactForm").style.display = "none";
-            successEl.style.display = "block";
+          const data = await response.json();
+          if (response.ok) {
+            form.reset();
+            // Reset checkbox visual state
+            document
+              .querySelectorAll(".checkbox-item.checked")
+              .forEach((el) => el.classList.remove("checked"));
+            document.getElementById("form-success").style.display = "block";
+            document.getElementById("form-error").style.display = "none";
+            setTimeout(() => {
+              document.getElementById("form-success").style.display = "none";
+            }, 6000);
           } else {
-            btn.textContent = "Send message";
-            btn.disabled = false;
-            errorEl.style.display = "block";
+            document.getElementById("form-error").textContent =
+              "Error: " + (data.message || "Please try again.");
+            document.getElementById("form-error").style.display = "block";
           }
-        } catch {
-          btn.textContent = "Send message";
-          btn.disabled = false;
-          errorEl.style.display = "block";
+        } catch (error) {
+          document.getElementById("form-error").textContent =
+            "Something went wrong. Please try again or email hello@raemcdowell.co";
+          document.getElementById("form-error").style.display = "block";
+        } finally {
+          submitBtn.innerHTML = originalHTML;
+          submitBtn.disabled = false;
         }
-      }
+      });
     </script>
   </body>
 </html>
