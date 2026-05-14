@@ -997,6 +997,20 @@
         transform: translateX(3px);
       }
 
+      /* Outcome stat line replacing tag pills */
+      .cs-outcome-stat {
+        font-family: "DM Mono", monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.06em;
+        color: var(--accent);
+        font-weight: 500;
+        padding: 0 2rem 0.75rem;
+        line-height: 1.55;
+      }
+      :root .services .cs-outcome-stat {
+        color: var(--accent);
+      }
+
       /* modals */
       .cs-modal-overlay {
         display: none;
@@ -1413,6 +1427,23 @@
         letter-spacing: 0.12em;
         color: var(--text3);
         text-transform: uppercase;
+      }
+      .footer-email {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.58rem;
+        letter-spacing: 0.06em;
+        color: var(--text3);
+      }
+      .footer-email a {
+        color: var(--text3);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-email a:hover {
+        color: var(--accent);
       }
       .accent-bar {
         height: 2px;
@@ -2156,8 +2187,12 @@
           bottlenecks.
         </p>
         <div class="hero-cta" style="justify-content: center">
-          <a href="contact.html" class="btn-start btn-start--lg"
-            >Let's talk<svg
+          <a
+            href="https://cal.eu/raemcdowell/discovery-call"
+            target="_blank"
+            rel="noopener"
+            class="btn-primary"
+            >Book a Call<svg
               width="14"
               height="14"
               viewBox="0 0 14 14"
@@ -3792,9 +3827,8 @@
               From listing to posted — completely hands-off.
             </p>
           </div>
-          <div class="cs-tags">
-            <span>AI copywriting</span><span>Social scheduling</span
-            ><span>Content automation</span>
+          <div class="cs-outcome-stat">
+            Consistent social presence. Zero manual effort.
           </div>
           <button class="cs-read-btn" onclick="openModal('cs1')">
             Read case study
@@ -3837,9 +3871,8 @@
               Filter serious buyers from noise automatically.
             </p>
           </div>
-          <div class="cs-tags">
-            <span>Lead qualification</span><span>Email automation</span
-            ><span>Inbox triage</span>
+          <div class="cs-outcome-stat">
+            2 hours recovered per day. Inbox runs itself.
           </div>
           <button class="cs-read-btn" onclick="openModal('cs2')">
             Read case study
@@ -4103,7 +4136,7 @@
           href="https://cal.eu/raemcdowell/discovery-call"
           target="_blank"
           rel="noopener"
-          class="btn-start btn-start--lg"
+          class="btn-primary"
           >Book a Call<svg
             width="14"
             height="14"
@@ -4129,43 +4162,24 @@
       <div class="about-grid">
         <div class="about-text">
           <p class="reveal d1">
-            I'm a Dublin-based AI Automation Consultant focused on building
-            scalable systems that actually move businesses forward, not just
-            automate for the sake of it.
-          </p>
-          <p class="reveal d2">
             The gap between small businesses and large ones is closing, and AI
-            is closing it. The right systems give you the speed, consistency,
-            and capacity to compete at a level that used to require a much
-            bigger team. I build those systems, and
+            is closing it. The right systems give Irish SMEs the speed,
+            consistency, and capacity to compete at a level that used to require
+            a much bigger team. I build those systems, and
             <b>I measure my success by what they deliver for yours.</b>
           </p>
-          <p class="reveal d3">
+          <p class="reveal d2">
             Every engagement starts with a
-            <b>free discovery session (no commitment, no cost)</b>. From there,
+            <b>free discovery session — no commitment, no cost.</b> From there,
             you get a fixed-price proposal with a clear scope before anything is
-            built. No surprises, no scope creep. Everything is delivered under a
-            formal contract, so you know exactly what you're getting, what it
-            costs, and what happens if it doesn't meet the brief.
-          </p>
-          <p class="reveal d4">
-            Most business owners who come to me have already wasted time on
-            tools that didn't stick, or agencies that over-promised and
-            under-delivered. You need systems that actually work, built around
-            how your business runs, not a generic template. I offer something
-            larger agencies rarely can:
+            built. No surprises, no scope creep. You get
             <b
               >full personal attention, genuine investment in your results, and
-              pricing that reflects the work, not a brand name.</b
+              pricing that reflects the work.</b
             >
-            Every system I build matters to me, because my reputation is built
-            one client at a time. If the fit isn't right after our Discovery
-            Call, I'll tell you.
-            <b
-              >My goal is a result you'll talk about: a business that runs more
-              smoothly, wins more consistently, and no longer depends entirely
-              on you.</b
-            >
+            My goal is a result you'll talk about: a business that runs more
+            smoothly, wins more consistently, and no longer depends entirely on
+            you.
           </p>
         </div>
         <div class="about-aside">
@@ -4316,10 +4330,10 @@
         </p>
         <div class="contact-cta-btns">
           <a
-            href="https://cal.com/YOUR_CAL_USERNAME/discovery-call"
+            href="https://cal.eu/raemcdowell/discovery-call"
             target="_blank"
             rel="noopener"
-            class="btn-start btn-start--lg"
+            class="btn-primary"
             >Book a Call<svg
               width="14"
               height="14"
@@ -4333,7 +4347,7 @@
               <path d="M2 7h10M8 3l4 4-4 4" /></svg
           ></a>
           <a href="contact.html" class="btn-ghost btn-ghost--lg"
-            >Let's Talk<svg
+            >Send a Message<svg
               width="14"
               height="14"
               viewBox="0 0 14 14"
@@ -4353,7 +4367,23 @@
     <footer class="reveal">
       <a href="#" class="footer-logo">Rae McDowell</a>
       <span class="footer-copy">© 2026 Rae McDowell · Dublin, Ireland</span>
-      <span class="footer-copy">AI Automation Consulting</span>
+      <span class="footer-email">
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="opacity: 0.55"
+        >
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="M2 7l10 7 10-7" />
+        </svg>
+        <a href="mailto:hello@raemcdowell.co">hello@raemcdowell.co</a>
+      </span>
     </footer>
 
     <!-- COOKIE BANNER -->
